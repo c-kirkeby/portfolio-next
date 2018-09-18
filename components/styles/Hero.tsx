@@ -10,6 +10,10 @@ export const Hero = styled.div`
   width: 100%;
 `
 
+export const HeroTitle = styled.h1`
+  text-align: center;
+`
+
 export const HeroIntro = styled.p`
   
 `
