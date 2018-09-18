@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { injectGlobal } from 'styled-components'
+import Meta from './Meta'
 import Nav from './Nav'
 
 injectGlobal`
@@ -42,7 +43,7 @@ const Footer = styled.footer`
 export default (props): JSX.Element =>
   <div>
     <Page>
-      {/* <Meta /> */}
+      <Meta />
       <Nav />
       <Inner>
         {props.children}
