@@ -1,6 +1,7 @@
 import React from 'react'
-import Link from 'next/link'
 import styled from 'styled-components'
+
+import NavLink from './NavLink'
 
 const Nav = styled.header`
   align-items: center;
@@ -24,17 +25,13 @@ const NavLinks = styled.nav`
   }
 `
 
-const NavLink = styled(Link)`
-  color: ${props => props.active ? '#777': '#000'};
-`
-
 export default () =>
   <Nav>
     <NavBrand href=''>
       Christian Kirkeby
     </NavBrand>
     <NavLinks>
-      <NavLink active href='/'>
+      <NavLink href='/'>
         <a>Home</a>
       </NavLink>
       {' '}
