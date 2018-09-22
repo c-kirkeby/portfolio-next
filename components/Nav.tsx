@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import NavLink from './NavLink'
+import NavBrandLogo from './NavBandLogo'
 
 const Nav = styled.header`
   align-items: center;
@@ -12,7 +13,8 @@ const Nav = styled.header`
 `
 
 const NavBrand = styled.a`
-  display: block;
+  display: inline-flex;
+  flex: 1;
 `
 
 const NavLinks = styled.nav`
@@ -27,8 +29,8 @@ const NavLinks = styled.nav`
 
 export default () =>
   <Nav>
-    <NavBrand href=''>
-      Christian Kirkeby
+    <NavBrand href='/'>
+      <NavBrandLogo />
     </NavBrand>
     <NavLinks>
       <NavLink href='/'>
