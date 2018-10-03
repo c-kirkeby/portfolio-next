@@ -34,15 +34,15 @@ export default () =>
     </NavBrand>
     <NavLinks>
       <NavLink href='/'>
-        <a>Home</a>
+        Home
       </NavLink>
       {' '}
-      <NavLink href='/contact'>
-        <a>Contact</a>
+      <NavLink prefetch href='/contact'>
+        Contact
       </NavLink>
       {' '}
-      <NavLink href='/portfolio'>
-        <a>Portfolio</a>
+      <NavLink prefetch href='/portfolio'>
+        Portfolio
       </NavLink>
     </NavLinks>
   </Nav>
