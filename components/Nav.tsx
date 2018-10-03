@@ -37,6 +37,10 @@ export default () =>
         Home
       </NavLink>
       {' '}
+      <NavLink href='/blog'>
+        Blog
+      </NavLink>
+      {' '}
       <NavLink prefetch href='/contact'>
         Contact
       </NavLink>
