@@ -1,51 +1,41 @@
 import React from 'react'
 import styled from 'styled-components'
-
 import NavLink from './NavLink'
-import NavBrandLogo from './NavBandLogo'
 
 const Nav = styled.header`
   align-items: center;
   display: flex;
   justify-content: space-between;
   padding: 8px .75rem;
-  border-bottom: 1px solid #eee;
-`
-
-const NavBrand = styled.a`
-  display: inline-flex;
-  flex: 1;
+  /* border-bottom: 1px solid #000; */
 `
 
 const NavLinks = styled.nav`
   text-transform: uppercase;
   > a {
     font-size: 1.5rem;
-    /* @media screen and (min-width: 1200px) {
-      font-size: 3rem;
-    } */
+    margin-left: 30px;
   }
+  font-weight: 700;
+  letter-spacing: 1.5px;
 `
 
 export default () =>
   <Nav>
-    <NavBrand href='/'>
-      <NavBrandLogo />
-    </NavBrand>
     <NavLinks>
       <NavLink href='/'>
         Home
       </NavLink>
       {' '}
-      <NavLink href='/blog'>
+      <NavLink href='/blog' prefetch>
         Blog
       </NavLink>
       {' '}
-      <NavLink prefetch href='/contact'>
+      <NavLink href='/contact' prefetch>
         Contact
       </NavLink>
       {' '}
-      <NavLink prefetch href='/portfolio'>
+      <NavLink href='/portfolio' prefetch>
         Portfolio
       </NavLink>
     </NavLinks>

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { injectGlobal } from 'styled-components'
 import Meta from './Meta'
-import Nav from './Nav'
+import Header from './Header'
 
 injectGlobal`
   html {
@@ -28,6 +28,8 @@ const Page = styled.div`
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  margin: 0 auto;
+  max-width: 1160px;
 `
 
 const Inner = styled.main`
@@ -44,7 +46,8 @@ export default (props): JSX.Element =>
   <div>
     <Page>
       <Meta />
-      <Nav />
+      {/* <Nav /> */}
+      <Header />
       <Inner>
         {props.children}
       </Inner>
