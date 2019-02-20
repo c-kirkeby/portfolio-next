@@ -10,7 +10,7 @@ interface ILinkProps {
 
 interface NavLinkProps {
   children?: ReactNode
-  router: SingletonRouter
+  router?: SingletonRouter
   href: string,
   prefetch?: boolean
 }
@@ -27,7 +27,7 @@ const onMouseEnter = (prefetch = false, href: string) => {
 
 const NavLink: React.SFC<NavLinkProps> = ({ children, router, href, prefetch }, ...props) => {
   return (
-    <Link href={href}>
+    <Link href={href} passHref>
       <StyledNavLink
         onMouseEnter={()=> onMouseEnter(prefetch, href) }
         active={router.pathname === href}
@@ -38,6 +38,5 @@ const NavLink: React.SFC<NavLinkProps> = ({ children, router, href, prefetch }, 
     </Link>
   )
 }
-
 
 export default withRouter(NavLink)
