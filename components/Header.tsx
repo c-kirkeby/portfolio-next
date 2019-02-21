@@ -6,6 +6,7 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: stretch;
+  padding: 16px 40px;
 `
 
 export default () => {

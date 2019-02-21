@@ -22,6 +22,9 @@ injectGlobal`
   a {
     text-decoration: none;
   }
+  #nprogress .spinner {
+    display: none;
+  }
 `
 
 const Page = styled.div`

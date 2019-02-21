@@ -15,6 +15,9 @@ const NavLinks = styled.nav`
   > a {
     font-size: 1.5rem;
     margin-left: 30px;
+    :hover {
+      color: #666;
+    }
   }
   font-weight: 700;
   letter-spacing: 1.5px;
