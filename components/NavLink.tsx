@@ -1,27 +1,27 @@
 import Link from 'next/link'
 import Router, { SingletonRouter, withRouter } from 'next/router'
 import styled from 'styled-components'
-import { ReactNode } from 'react'
 
-type ILinkProps = {
+type LinkProps = {
   active?: boolean,
   onMouseEnter: () => void
 }
 
 type NavLinkProps = {
-  children?: ReactNode,
-  router: SingletonRouter,
+  children?: JSX.Element | string,
+  prefetch?: boolean,
+  router?: SingletonRouter,
   href: string
 }
 
-const StyledNavLink = styled.a<ILinkProps>`
+const StyledNavLink = styled.a<LinkProps>`
   color: ${props => props.active ? '#777' : '#000'};
 `
 
-const NavLink: React.SFC<NavLinkProps> = ({ children, router, href }) =>
+const NavLink: React.SFC<NavLinkProps> = ({ children, router, href, prefetch }) =>
   <Link href={href} passHref>
     <StyledNavLink
-      onMouseEnter={()=> Router.prefetch(href) }
+      onMouseEnter={()=> { prefetch ? Router.prefetch(href) : null}}
       active={router.pathname === href}
     >
       {children}

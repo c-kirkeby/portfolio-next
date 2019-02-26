@@ -1,9 +1,10 @@
 import React from 'react'
-import styled, { injectGlobal } from 'styled-components'
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import Meta from './Meta'
-import Nav from './Nav'
+import Header from './Header'
+import { ReactNode } from 'react'
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   html {
    box-sizing: border-box;
    font-size: 10px;
@@ -22,12 +23,27 @@ injectGlobal`
   a {
     text-decoration: none;
   }
+  #nprogress .spinner {
+    display: none;
+  }
+  #nprogress .bar {
+    background: ${props => props.theme.primary};
+  }
+  #nprogress .peg {
+    box-shadow: 0 0 10px ${props => props.theme.primary}, 0 0 5px ${props => props.theme.primary};
+  }
+  #nprogress .spinner-icon {
+    border-top-color: ${props => props.theme.primary};
+    border-left-color: ${props => props.theme.primary};
+  }
 `
 
 const Page = styled.div`
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  margin: 0 auto;
+  max-width: 1160px;
 `
 
 const Inner = styled.main`
@@ -40,14 +56,25 @@ const Footer = styled.footer`
   
 `
 
-export default (props): JSX.Element =>
+const theme = {
+  primary: '#8f4efc',
+  secondary: '#2e2e2e',
+  tertiary: '#7344c1'
+}
+
+export default (props: { children: ReactNode }): JSX.Element =>
   <div>
-    <Page>
-      <Meta />
-      <Nav />
-      <Inner>
-        {props.children}
-      </Inner>
-      <Footer></Footer>
-    </Page>
+    <ThemeProvider theme={theme}>
+      <React.Fragment>
+        <GlobalStyle />
+        <Page>
+          <Meta />
+          <Header />
+          <Inner>
+            {props.children}
+          </Inner>
+          <Footer></Footer>
+        </Page>
+      </React.Fragment>
+    </ThemeProvider>
   </div>
