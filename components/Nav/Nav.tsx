@@ -16,7 +16,7 @@ const NavLinks = styled.nav`
     font-size: 1.5rem;
     margin-left: 30px;
     :hover {
-      color: #666;
+      color: ${props => props.theme.tertiary};
     }
   }
   font-weight: 700;

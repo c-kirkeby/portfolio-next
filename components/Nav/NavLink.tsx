@@ -16,7 +16,7 @@ interface NavLinkProps {
 }
 
 const StyledNavLink = styled.a<ILinkProps>`
-  color: ${props => props.active ? '#777' : '#000'};
+  color: ${props => props.active ? props.theme.primary : props.theme.secondary};
 `
 
 const onMouseEnter = (prefetch = false, href: string) => {
@@ -29,7 +29,7 @@ const NavLink: React.SFC<NavLinkProps> = ({ children, router, href, prefetch }, 
   return (
     <Link href={href} passHref>
       <StyledNavLink
-        onMouseEnter={()=> onMouseEnter(prefetch, href) }
+        onMouseEnter={() => onMouseEnter(prefetch, href)}
         active={router.pathname === href}
         {...props}
       >
