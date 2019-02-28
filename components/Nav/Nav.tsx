@@ -2,16 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import NavLink from './NavLink'
 
-const Nav = styled.header`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 8px .75rem;
-  /* border-bottom: 1px solid #000; */
-`
-
 const NavLinks = styled.nav`
   text-transform: uppercase;
+  display: flex;
   > a {
     font-size: 1.5rem;
     margin-left: 30px;
@@ -19,27 +12,30 @@ const NavLinks = styled.nav`
       color: ${props => props.theme.tertiary};
     }
   }
+  @media only screen and (max-width: 768px) {
+    display: ${props => props.isMenuOpen ? 'flex' : 'none'};
+    flex-direction: column;
+  }
   font-weight: 700;
   letter-spacing: 1.5px;
 `
 
-export default () =>
-  <Nav>
-    <NavLinks>
+export default (props: { isMenuOpen: Boolean }) => {
+  const { isMenuOpen } = props
+  return (
+    <NavLinks isMenuOpen={isMenuOpen}>
       <NavLink href='/'>
         Home
-      </NavLink>
-      {' '}
+    </NavLink>
       <NavLink href='/blog' prefetch>
         Blog
-      </NavLink>
-      {' '}
+    </NavLink>
       <NavLink href='/contact' prefetch>
         Contact
-      </NavLink>
-      {' '}
+    </NavLink>
       <NavLink href='/portfolio' prefetch>
         Portfolio
-      </NavLink>
+    </NavLink>
     </NavLinks>
-  </Nav>
+  )
+}
