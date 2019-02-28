@@ -1,4 +1,4 @@
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/zeit/next.js/tree/master/examples/with-typescript)![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/{owner}/{repo})
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/zeit/next.js/tree/master/examples/with-typescript)![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/c-kirkeby/portfolio-next)
 
 # My Portfolio Site (Next.js)
 
