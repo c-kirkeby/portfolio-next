@@ -38,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const Page = styled.div`
+const Outer = styled.div`
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -67,14 +67,14 @@ export default (props: { children: ReactNode }): JSX.Element =>
     <ThemeProvider theme={theme}>
       <React.Fragment>
         <GlobalStyle />
-        <Page>
+        <Outer>
           <Meta />
           <Header />
           <Inner>
             {props.children}
           </Inner>
           <Footer></Footer>
-        </Page>
+        </Outer>
       </React.Fragment>
     </ThemeProvider>
   </div>
