@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import Nav from './Nav/Nav'
 import styled from 'styled-components'
 import { Logo, Brand } from './Brand'
-import { NavToggle } from './Nav'
+import { NavToggle, NavBar } from './Nav'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -22,6 +21,11 @@ const NavAside = styled.div`
   min-width: 135px;
 `
 
+export interface HeaderProps {
+  isMenuOpen: boolean,
+  onClick: Function
+}
+
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false)
   return (
@@ -31,8 +35,8 @@ const Header = () => {
         {/* <BrandTitle>Christian Kirkeby</BrandTitle> */}
       </Brand>
       <NavAside>
-        <NavToggle onClick={() => setMenuOpen(!isMenuOpen)}>Open/Close</NavToggle>
-        <Nav isMenuOpen={isMenuOpen} />
+        <NavToggle isMenuOpen={isMenuOpen} onClick={() => setMenuOpen(!isMenuOpen)} />
+        <NavBar isMenuOpen={isMenuOpen} />
       </NavAside>
     </StyledHeader>
   )

@@ -1,14 +1,14 @@
 import Link from 'next/link'
-import Router, { SingletonRouter, withRouter } from 'next/router'
-import styled from 'styled-components'
+import Router, { SingletonRouter, useRouter } from 'next/router'
+import styled from '../../theme/styled-components'
 import { ReactNode } from 'react'
 
-interface ILinkProps {
+export interface ILinkProps {
   active?: boolean
   onMouseEnter: () => void
 }
 
-interface NavLinkProps {
+export interface NavLinkProps {
   children?: ReactNode
   router?: SingletonRouter
   href: string,
@@ -25,7 +25,8 @@ const onMouseEnter = (prefetch = false, href: string) => {
   }
 }
 
-const NavLink: React.SFC<NavLinkProps> = ({ children, router, href, prefetch }, ...props) => {
+const NavLink: React.SFC<NavLinkProps> = ({ children, href, prefetch }, ...props) => {
+  const router = useRouter()
   return (
     <Link href={href} passHref>
       <StyledNavLink
@@ -39,4 +40,4 @@ const NavLink: React.SFC<NavLinkProps> = ({ children, router, href, prefetch }, 
   )
 }
 
-export default withRouter(NavLink)
+export default NavLink
