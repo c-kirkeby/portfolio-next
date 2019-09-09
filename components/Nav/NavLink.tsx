@@ -16,7 +16,10 @@ export interface NavLinkProps {
 }
 
 const StyledNavLink = styled.a<ILinkProps>`
-  color: ${props => props.active ? props.theme.primary : props.theme.secondary};
+  color: ${props => props.active ? props.theme.light.primary : props.theme.light.secondary};
+  @media (prefers-color-scheme: dark) {
+    color: ${props => props.active ? props.theme.dark.primary : props.theme.dark.secondary};
+  }
 `
 
 const onMouseEnter = (prefetch = false, href: string) => {

@@ -6,16 +6,20 @@ import { ReactNode } from 'react'
 
 const GlobalStyle = createGlobalStyle`
   html {
-   box-sizing: border-box;
-   font-size: 10px;
+    box-sizing: border-box;
+    font-size: 10px;
   }
   body {
-   font-family: sans-serif;
-   padding: 0;
-   background-color: #ffffff;
-   margin: 0;
-   font-size: 1.5rem;
-   line-height: 2;
+    /* Helvetica-based font stack: https://css-tricks.com/snippets/css/font-stacks/ */
+    font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 0;
+    background-color: #ffffff;
+    @media (prefers-color-scheme: dark) {
+      background-color: #001628;
+    }
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 2;
   }
   *, *:before, *:after {
     box-sizing: inherit;
@@ -35,6 +39,12 @@ const GlobalStyle = createGlobalStyle`
   #nprogress .spinner-icon {
     border-top-color: ${props => props.theme.primary};
     border-left-color: ${props => props.theme.primary};
+  }
+  p, span, h1, h2, h3, h4, h5 {
+    color: ${props => props.theme.light.secondary};
+    @media (prefers-color-scheme: dark) {
+      color: ${props => props.theme.dark.secondary};
+    }
   }
 `
 
@@ -56,10 +66,23 @@ const Footer = styled.footer`
   
 `
 
+const colours = {
+  black: '#001626',
+  white: '#fefefe',
+  purple: '#8f4efc',
+  offPurple: '#7344c1'
+}
+
 const theme = {
-  primary: '#8f4efc',
-  secondary: '#2e2e2e',
-  tertiary: '#7344c1'
+  light: {
+    primary: colours.purple,
+    secondary: colours.black,
+    tertiary: colours.offPurple,
+  },
+  dark: {
+    primary: colours.purple,
+    secondary: colours.white
+  }
 }
 
 export default (props: { children: ReactNode }): JSX.Element =>

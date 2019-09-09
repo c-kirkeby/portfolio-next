@@ -7,13 +7,16 @@ export interface NavLinksProps {
 const NavLinks = styled.nav<NavLinksProps>`
   text-transform: uppercase;
   display: flex;
-  align-items: center;
+  align-items: end;
   height: 100%;
   > a {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     margin-left: 30px;
     :hover {
-      color: ${props => props.theme.tertiary};
+      color: ${props => props.theme.light.tertiary};
+      @media (prefers-color-scheme: dark) {
+        ${props => props.theme.dark.tertiary}
+      }
     }
   }
   @media only screen and (max-width: 768px) {

@@ -12,6 +12,10 @@ export const Hero = styled.div`
 
 export const HeroTitle = styled.h1`
   text-align: center;
+  color: ${props => props.theme.light.secondary};
+  @media (prefers-color-scheme: dark) {
+    color: ${props => props.theme.dark.secondary};
+  }
 `
 
 export const HeroIntro = styled.p`

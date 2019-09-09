@@ -1,5 +1,5 @@
 
-export default () => 
+export default () =>
   <section>
-    <h1>Wanna contact me? That'd be great!</h1>
+    <h1>Ways to contact me are coming soon!</h1>
   </section>

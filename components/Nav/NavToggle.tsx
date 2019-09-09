@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { HeaderProps } from '../Header'
 
 const NavToggleStyle = styled.button`
-  padding: 2rem 2rem;
+  padding: 1.75rem 0rem 1.75rem 1.75rem;
   display: none;
   cursor: pointer;
 
@@ -28,7 +28,7 @@ const NavToggleStyle = styled.button`
   @media only screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    align-self: center;
+    align-self: end;
   }
 `
 
@@ -48,12 +48,18 @@ const HamburgerInner = styled.span`
   &::after {
     width: 40px;
     height: 4px;
-    background-color: #000;
+    background-color: ${props => props.theme.light.secondary};
+    @media (prefers-color-scheme: dark) {
+      background-color: ${props => props.theme.dark.secondary};
+    }
     border-radius: 4px;
     position: absolute;
     transition: transform 0.15s ease;
     &:hover, &:active {
-      background-color: ${props => props.theme.primary}
+      background-color: ${props => props.theme.light.primary};
+      @media (prefers-colour-theme: dark) {
+        background: ${props => props.theme.dark.primary};
+      }
     }
   }
   &::before,
