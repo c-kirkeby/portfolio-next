@@ -86,7 +86,7 @@ const theme = {
 }
 
 export default (props: { children: ReactNode }): JSX.Element =>
-  <div>
+  <>
     <ThemeProvider theme={theme}>
       <React.Fragment>
         <GlobalStyle />
@@ -100,4 +100,4 @@ export default (props: { children: ReactNode }): JSX.Element =>
         </Outer>
       </React.Fragment>
     </ThemeProvider>
-  </div>
+  </>

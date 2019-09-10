@@ -102,7 +102,7 @@ const HamburgerInner = styled.span`
 `
 
 const NavToggle = ({ isMenuOpen, onClick, ...props }: HeaderProps) =>
-  <NavToggleStyle onClick={() => onClick()} {...props}>
+  <NavToggleStyle aria-label="menu toggle" onClick={() => onClick()} {...props}>
     <Hamburger isMenuOpen={isMenuOpen}>
       <HamburgerInner isMenuOpen={isMenuOpen}></HamburgerInner>
     </Hamburger>

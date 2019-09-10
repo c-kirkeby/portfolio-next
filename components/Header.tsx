@@ -36,8 +36,8 @@ const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false)
   return (
     <StyledHeader>
-      <Brand href='/'>
-        <Logo />
+      <Brand href="/" aria-label="Link to homepage">
+        <Logo alt="site logo" />
         {/* <BrandTitle>Christian Kirkeby</BrandTitle> */}
       </Brand>
       <NavAside isMenuOpen={isMenuOpen}>
