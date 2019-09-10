@@ -7,7 +7,7 @@ export interface NavLinksProps {
 const NavLinks = styled.nav<NavLinksProps>`
   text-transform: uppercase;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   height: 100%;
   > a {
     font-size: 1.75rem;

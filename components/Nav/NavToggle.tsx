@@ -28,7 +28,7 @@ const NavToggleStyle = styled.button`
   @media only screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    align-self: end;
+    align-self: flex-end;
   }
 `
 
