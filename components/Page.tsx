@@ -1,5 +1,6 @@
 import React from 'react'
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
+import styled, { ThemeProvider, createGlobalStyle } from '../theme/styled-components'
+import theme from '../theme'
 import Meta from './Meta'
 import Header from './Header'
 import { ReactNode } from 'react'
@@ -15,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     background-color: #ffffff;
     @media (prefers-color-scheme: dark) {
-      background-color: #001628;
+      background-color: ${props => props.theme.dark.tertiary};
     }
     margin: 0;
     font-size: 1.5rem;
@@ -31,14 +32,14 @@ const GlobalStyle = createGlobalStyle`
     display: none;
   }
   #nprogress .bar {
-    background: ${props => props.theme.primary};
+    background: ${props => props.theme.light.primary};
   }
   #nprogress .peg {
-    box-shadow: 0 0 10px ${props => props.theme.primary}, 0 0 5px ${props => props.theme.primary};
+    box-shadow: 0 0 10px ${props => props.theme.light.primary}, 0 0 5px ${props => props.theme.light.primary};
   }
   #nprogress .spinner-icon {
-    border-top-color: ${props => props.theme.primary};
-    border-left-color: ${props => props.theme.primary};
+    border-top-color: ${props => props.theme.light.primary};
+    border-left-color: ${props => props.theme.light.primary};
   }
   p, span, h1, h2, h3, h4, h5 {
     color: ${props => props.theme.light.secondary};
@@ -65,25 +66,6 @@ const Inner = styled.main`
 const Footer = styled.footer`
   
 `
-
-const colours = {
-  black: '#001626',
-  white: '#fefefe',
-  purple: '#8f4efc',
-  offPurple: '#7344c1'
-}
-
-const theme = {
-  light: {
-    primary: colours.purple,
-    secondary: colours.black,
-    tertiary: colours.offPurple,
-  },
-  dark: {
-    primary: colours.purple,
-    secondary: colours.white
-  }
-}
 
 export default (props: { children: ReactNode }): JSX.Element =>
   <>

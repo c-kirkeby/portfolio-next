@@ -1,2 +1,2 @@
-export { default as Brand } from './Brand'
+export { default as BrandLink } from './BrandLink'
 export { default as Logo } from './BrandLogo'

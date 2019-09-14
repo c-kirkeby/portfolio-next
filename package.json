@@ -13,19 +13,20 @@
     "nprogress": "^0.2.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "recompose": "^0.30.0",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "@types/next": "^8.0.6",
+    "@types/nprogress": "^0.2.0",
     "@types/react": "^16.9.2",
-    "babel-plugin-styled-components": "^1.10.6",
-    "typescript": "^3.6.2",
+    "@types/styled-components": "^4.1.19",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.4.2",
+    "babel-plugin-styled-components": "^1.10.6",
     "eslint": "^5.16.0",
     "snazzy": "^8.0.0",
-    "standard": "^12.0.1"
+    "standard": "^12.0.1",
+    "typescript": "^3.6.2"
   },
   "license": "ISC",
   "standard": {
@@ -36,8 +37,7 @@
   },
   "babel": {
     "presets": [
-      "next/babel",
-      "@zeit/next-typescript/babel"
+      "next/babel"
     ],
     "plugins": [
       [

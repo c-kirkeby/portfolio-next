@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import { Logo, Brand } from './Brand'
+import { Logo, BrandLink } from './Brand'
 import { NavToggle, NavBar } from './Nav'
 
 const StyledHeader = styled.header`
@@ -19,7 +19,7 @@ const StyledHeader = styled.header`
 
 // `
 
-const NavAside = styled.div`
+const NavAside = styled.div<HeaderMenuProps>`
   display: flex;
   flex-direction: column;
   @media only screen and (max-width: 768px) {
@@ -32,14 +32,16 @@ export interface HeaderProps {
   onClick: Function
 }
 
+export type HeaderMenuProps = Pick<HeaderProps, "isMenuOpen">
+
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false)
   return (
     <StyledHeader>
-      <Brand href="/" aria-label="Link to homepage">
+      <BrandLink href="/" aria-label="Link to homepage">
         <Logo alt="site logo" />
         {/* <BrandTitle>Christian Kirkeby</BrandTitle> */}
-      </Brand>
+      </BrandLink>
       <NavAside isMenuOpen={isMenuOpen}>
         <NavToggle isMenuOpen={isMenuOpen} onClick={() => setMenuOpen(!isMenuOpen)} />
         <NavBar isMenuOpen={isMenuOpen} />

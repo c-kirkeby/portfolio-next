@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { HeaderProps } from '../Header'
+import { HeaderProps, HeaderMenuProps } from '../Header'
 
 const NavToggleStyle = styled.button`
   padding: 1.75rem 0rem 1.75rem 1.75rem;
@@ -16,7 +16,6 @@ const NavToggleStyle = styled.button`
   border: 0;
   margin: 0;
   overflow: visible;
-  
   transition-property: opacity, filter;
   transition-duration: 0.15s;
   transition-timing-function: linear;
@@ -39,7 +38,7 @@ const Hamburger = styled.div`
   position: relative;
 `
 
-const HamburgerInner = styled.span`
+const HamburgerInner = styled.span<HeaderMenuProps>`
   display: block;
   top: 50%;
   margin-top: -2px;
@@ -102,8 +101,8 @@ const HamburgerInner = styled.span`
 `
 
 const NavToggle = ({ isMenuOpen, onClick, ...props }: HeaderProps) =>
-  <NavToggleStyle aria-label="menu toggle" onClick={() => onClick()} {...props}>
-    <Hamburger isMenuOpen={isMenuOpen}>
+  <NavToggleStyle onClick={() => onClick()} {...props}>
+    <Hamburger>
       <HamburgerInner isMenuOpen={isMenuOpen}></HamburgerInner>
     </Hamburger>
   </NavToggleStyle>
