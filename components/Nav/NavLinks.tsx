@@ -5,17 +5,17 @@ export interface NavLinksProps {
 }
 
 const NavLinks = styled.nav<NavLinksProps>`
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   display: flex;
   align-items: flex-end;
   height: 100%;
   > a {
-    font-size: 1.75rem;
-    margin-left: 30px;
+    font-size: 1.25rem;
+    margin-left: 2rem;
     :hover {
       color: ${props => props.theme.light.tertiary};
       @media (prefers-color-scheme: dark) {
-        ${props => props.theme.dark.tertiary}
+        ${props => props.theme.dark.tertiary};
       }
     }
   }
@@ -23,9 +23,12 @@ const NavLinks = styled.nav<NavLinksProps>`
     display: ${props => props.isMenuOpen ? 'flex' : 'none'};
     flex-direction: column;
     transition: height 5s;
+    > a {
+      font-size: 1.5rem;
+    }
   }
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 0.125rem;
 `
 
 export default NavLinks

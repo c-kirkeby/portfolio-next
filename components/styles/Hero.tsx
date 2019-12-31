@@ -10,7 +10,7 @@ export const Hero = styled.div`
   width: 100%;
 `
 
-export const HeroTitle = styled.h1`
+export const HeroTitle = styled.span`
   text-align: center;
   color: ${props => props.theme.light.secondary};
   @media (prefers-color-scheme: dark) {

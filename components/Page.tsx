@@ -1,18 +1,24 @@
 import React from 'react'
 import styled, { ThemeProvider, createGlobalStyle } from '../theme/styled-components'
 import theme from '../theme'
+import fonts from '../theme/fonts'
 import Meta from './Meta'
 import Header from './Header'
 import { ReactNode } from 'react'
 
 const GlobalStyle = createGlobalStyle`
+  ${fonts}
   html {
     box-sizing: border-box;
-    font-size: 10px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+  }
+  @supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
   }
   body {
     /* Helvetica-based font stack: https://css-tricks.com/snippets/css/font-stacks/ */
-    font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Inter", Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 0;
     background-color: #ffffff;
     @media (prefers-color-scheme: dark) {
@@ -46,6 +52,9 @@ const GlobalStyle = createGlobalStyle`
     @media (prefers-color-scheme: dark) {
       color: ${props => props.theme.dark.secondary};
     }
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: "Metropolis", Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 `
 

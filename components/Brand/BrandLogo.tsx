@@ -3,8 +3,8 @@ import React from 'react'
 
 const BrandLogo = styled.svg`
   display: inline-block;
-  height: 6rem;
-  width: 6rem;
+  height: 4.5rem;
+  width: 4.5rem;
   padding: 0.5rem;
   cursor: pointer;
   }
@@ -32,11 +32,11 @@ const BrandLogo = styled.svg`
   }
 `
 
-export default (props) => {
+export default (props: any) => {
   return (
     <BrandLogo width={250} height={250} viewBox="0 0 256 256" fill="none" {...props}>
-      <circle cx={125} cy={125} r={125} class="logo--bg" />
-      <g class="logo--fg">
+      <circle cx={125} cy={125} r={125} className="logo--bg" />
+      <g className="logo--fg">
         <rect
           transform="skewX(-15)"
           width={55.5}

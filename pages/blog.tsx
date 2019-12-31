@@ -1,4 +1,6 @@
 
+import styled from 'styled-components'
+
 const placeholderArticles = [
   {
     key: '34k5helkjt34kh345h3k4j5h',
@@ -12,13 +14,31 @@ const placeholderArticles = [
   }
 ]
 
+const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
+
+const Article = styled.article`
+
+`
+
+const ArticleHeadline = styled.h2`
+  
+`
+
+const ArticleBlurb = styled.p`
+
+`
+
 export default () =>
-  <section>
+  <Section>
     <h1>Blog</h1>
     {placeholderArticles.map(article => (
-      <article key={article.key}>
-        <h2>{article.title}</h2>
-        <p>{article.description}</p>
-      </ article>
+      <Article key={article.key}>
+        <ArticleHeadline>{article.title}</ArticleHeadline>
+        <ArticleBlurb>{article.description}</ArticleBlurb>
+      </Article>
     ))}
-  </section>
+  </Section>

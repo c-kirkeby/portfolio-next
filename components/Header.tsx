@@ -10,7 +10,7 @@ const StyledHeader = styled.header`
   @media only screen and (max-width: 768px) {
     align-items: stretch;
   }
-  padding: 1.5rem 3rem;
+  padding: 0.75rem 1.5rem;
 `
 
 // const BrandTitle = styled.span`
@@ -38,7 +38,7 @@ const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false)
   return (
     <StyledHeader>
-      <BrandLink href="/" aria-label="Link to homepage">
+      <BrandLink href="/">
         <Logo alt="site logo" />
         {/* <BrandTitle>Christian Kirkeby</BrandTitle> */}
       </BrandLink>
