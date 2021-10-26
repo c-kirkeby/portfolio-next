@@ -16,11 +16,8 @@ export interface NavLinkProps {
 }
 
 const StyledNavLink = styled.a<ILinkProps>`
-  font-family: ${props => props.theme.fonts.heading};
-  color: ${props => props.active ? props.theme.light.primary : props.theme.light.secondary};
-  @media (prefers-color-scheme: dark) {
-    color: ${props => props.active ? props.theme.dark.primary : props.theme.dark.secondary};
-  }
+  font-family: ${props => props.theme.fonts.body};
+  color: ${props => props.active ? props.theme.primary : props.theme.secondary};
 `
 
 const onMouseEnter = (prefetch = false, href: string) => {
@@ -29,7 +26,7 @@ const onMouseEnter = (prefetch = false, href: string) => {
   }
 }
 
-const NavLink: React.SFC<NavLinkProps> = ({ children, href, prefetch }, ...props) => {
+const NavLink: React.FC<NavLinkProps> = ({ children, href, prefetch }, ...props) => {
   const router = useRouter()
   return (
     <Link href={href} passHref>

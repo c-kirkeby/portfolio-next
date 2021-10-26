@@ -32,7 +32,7 @@ const ArticleBlurb = styled.p`
 
 `
 
-export default () =>
+const Posts = () =>
   <Section>
     <h1>Blog</h1>
     {placeholderArticles.map(article => (
@@ -42,3 +42,5 @@ export default () =>
       </Article>
     ))}
   </Section>
+
+export default Posts

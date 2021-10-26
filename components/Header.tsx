@@ -1,51 +1,38 @@
-import { useState } from 'react'
 import styled from 'styled-components'
 import { Logo, BrandLink } from './Brand'
-import { NavToggle, NavBar } from './Nav'
+import { NavBar } from './Nav'
+import ColourToggle from './ColourToggle'
 
 const StyledHeader = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  @media only screen and (max-width: 768px) {
-    align-items: stretch;
-  }
-  padding: 0.75rem 1.5rem;
+  height: 70px;
+  padding: 0.75rem 1rem;
+  margin: 0 auto;
 `
 
-// const BrandTitle = styled.span`
-//   font-size: 3rem;
-//   text-transform: uppercase;
-
-// `
-
-const NavAside = styled.div<HeaderMenuProps>`
+const HeaderInner = styled.div`
+  width: 900px;
   display: flex;
-  flex-direction: column;
-  @media only screen and (max-width: 768px) {
-    max-width: 135px;
-  }
 `
 
-export interface HeaderProps {
-  isMenuOpen: boolean,
-  onClick: Function
-}
+const HeaderSpacer = styled.div`
+  margin: 0 auto;
+`
 
-export type HeaderMenuProps = Pick<HeaderProps, "isMenuOpen">
-
-const Header = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false)
+const Header = ({ themeToggle, ...props }) => {
   return (
     <StyledHeader>
-      <BrandLink href="/">
-        <Logo alt="site logo" />
-        {/* <BrandTitle>Christian Kirkeby</BrandTitle> */}
-      </BrandLink>
-      <NavAside isMenuOpen={isMenuOpen}>
-        <NavToggle isMenuOpen={isMenuOpen} onClick={() => setMenuOpen(!isMenuOpen)} />
-        <NavBar isMenuOpen={isMenuOpen} />
-      </NavAside>
+      <HeaderInner>
+        <BrandLink passHref href="/">
+          <Logo alt="site logo" />
+          {/* <BrandTitle>Christian Kirkeby</BrandTitle> */}
+        </BrandLink>
+        <HeaderSpacer></HeaderSpacer>
+        <NavBar />
+        <ColourToggle />
+      </HeaderInner>
     </StyledHeader>
   )
 }

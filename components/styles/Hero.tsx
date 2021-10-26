@@ -8,14 +8,11 @@ export const Hero = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  flex-direction: column;
 `
 
-export const HeroTitle = styled.span`
+export const HeroTitle = styled.h1`
   text-align: center;
-  color: ${props => props.theme.light.secondary};
-  @media (prefers-color-scheme: dark) {
-    color: ${props => props.theme.dark.secondary};
-  }
 `
 
 export const HeroIntro = styled.p`

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { ReactElement, useState } from 'react'
 import styled, { ThemeProvider, createGlobalStyle } from '../theme/styled-components'
-import theme from '../theme'
+import { lightTheme, darkTheme } from '../theme'
 import fonts from '../theme/fonts'
 import Meta from './Meta'
 import Header from './Header'
@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   ${fonts}
   html {
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Inter', sans-serif;
   }
   @supports (font-variation-settings: normal) {
@@ -20,12 +20,9 @@ const GlobalStyle = createGlobalStyle`
     /* Helvetica-based font stack: https://css-tricks.com/snippets/css/font-stacks/ */
     font-family: "Inter", Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 0;
-    background-color: #ffffff;
-    @media (prefers-color-scheme: dark) {
-      background-color: ${props => props.theme.dark.tertiary};
-    }
+    background-color: ${props => props.theme.secondary};
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height: 2;
   }
   *, *:before, *:after {
@@ -38,20 +35,17 @@ const GlobalStyle = createGlobalStyle`
     display: none;
   }
   #nprogress .bar {
-    background: ${props => props.theme.light.primary};
+    background: ${props => props.theme.background};
   }
   #nprogress .peg {
-    box-shadow: 0 0 10px ${props => props.theme.light.primary}, 0 0 5px ${props => props.theme.light.primary};
+    box-shadow: 0 0 10px ${props => props.theme.primary}, 0 0 5px ${props => props.theme.primary};
   }
   #nprogress .spinner-icon {
-    border-top-color: ${props => props.theme.light.primary};
-    border-left-color: ${props => props.theme.light.primary};
+    border-top-color: ${props => props.theme.primary};
+    border-left-color: ${props => props.theme.primary};
   }
   p, span, h1, h2, h3, h4, h5 {
-    color: ${props => props.theme.light.secondary};
-    @media (prefers-color-scheme: dark) {
-      color: ${props => props.theme.dark.secondary};
-    }
+    color: ${props => props.theme.text};
   }
   h1, h2, h3, h4, h5 {
     font-family: "Metropolis", Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -63,7 +57,7 @@ const Outer = styled.div`
   min-height: 100vh;
   flex-direction: column;
   margin: 0 auto;
-  max-width: 1160px;
+  /* max-width: 900px; */
 `
 
 const Inner = styled.main`
@@ -76,19 +70,29 @@ const Footer = styled.footer`
   
 `
 
-export default (props: { children: ReactNode }): JSX.Element =>
-  <>
-    <ThemeProvider theme={theme}>
-      <React.Fragment>
-        <GlobalStyle />
-        <Outer>
-          <Meta />
-          <Header />
-          <Inner>
-            {props.children}
-          </Inner>
-          <Footer></Footer>
-        </Outer>
-      </React.Fragment>
-    </ThemeProvider>
-  </>
+const Page = (props: { children: ReactNode }): ReactElement => {
+  const [theme, setTheme] = useState('light')
+  const themeToggle = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light')
+  }
+  return (
+    <>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <React.Fragment>
+          <GlobalStyle />
+          <Outer>
+            <Meta />
+            <Header themeToggle={themeToggle} />
+            <Inner>
+              {props.children}
+            </Inner>
+            <Footer></Footer>
+          </Outer>
+        </React.Fragment>
+      </ThemeProvider>
+    </>
+  )
+}
+
+
+export default Page

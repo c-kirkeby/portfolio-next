@@ -20,30 +20,30 @@ export interface ThemeProps {
 const colours = {
   black: '#18013D',
   white: '#fefefe',
-  purple: '#8f4efc',
+  purple: '#6308FB',
   offPurple: '#6004F9'
 }
 
 const fonts = {
-  heading: `"Metropolis", Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif`,
-  body: `"Inter", Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif`
+  heading: 'Metropolis, system-ui, sans-serif',
+  body: `Inter, system-ui, sans-serif`
 }
 
-export const theme = {
+export const lightTheme = {
   fonts: fonts,
-  light: {
-    primary: colours.purple,
-    secondary: colours.black,
-    tertiary: colours.offPurple,
-    light: colours.white,
-    boxShadow: '0px 0px 43px -10px black'
-  },
-  dark: {
-    primary: colours.purple,
-    secondary: colours.white,
-    tertiary: colours.black,
-    light: colours.white
-  }
+  primary: colours.purple,
+  background: colours.white,
+  text: colours.black,
+  secondary: colours.white,
+  black: colours.black,
+  boxShadow: '0px 0px 43px -10px black'
 }
 
-export default theme
+export const darkTheme = {
+  fonts: fonts,
+  primary: colours.white,
+  background: colours.purple,
+  text: colours.white,
+  secondary: colours.purple,
+  black: colours.black,
+}

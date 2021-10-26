@@ -3,13 +3,12 @@ import { NavLink, NavLinks } from './'
 import { NavLinksProps } from './NavLinks'
 
 const NavBar = (props: NavLinksProps) => {
-  const { isMenuOpen } = props
   return (
-    <NavLinks isMenuOpen={isMenuOpen} {...props}>
+    <NavLinks {...props}>
       <NavLink href='/'>
         Home
       </NavLink>
-      <NavLink href='/blog' prefetch>
+      <NavLink href='/posts' prefetch>
         Blog
       </NavLink>
       <NavLink href='/contact' prefetch>

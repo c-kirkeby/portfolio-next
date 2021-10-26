@@ -1,64 +1,66 @@
 import styled from '../../theme/styled-components'
+import { darken } from 'polished'
 import React from 'react'
 
-const BrandLogo = styled.svg`
-  display: inline-block;
-  height: 4.5rem;
-  width: 4.5rem;
-  padding: 0.5rem;
+const LogoStyle = styled.svg`
   cursor: pointer;
-  }
   .logo--fg {
-    fill: ${props => props.theme.light.light};
+    fill: ${props => props.theme.secondary};
   }
   .logo--bg {
-    fill: ${props => props.theme.light.primary};
-  }
-  @media (prefers-color-scheme: dark) {
-    .logo--fg {
-      fill: ${props => props.theme.dark.tertiary};
-    }
-    .logo--bg {
-      fill: ${props => props.theme.dark.secondary}
-    }
+    fill: ${props => props.theme.primary};
   }
   &:hover {
     .logo--bg {
-      fill: ${props => props.theme.light.tertiary};
-      @media (prefers-color-scheme: dark) {
-        fill: ${props => props.theme.light.light};
-      }
+      fill: ${props => darken(0.25, props.theme.secondary)});
     }
   }
 `
 
-export default (props: any) => {
-  return (
-    <BrandLogo width={250} height={250} viewBox="0 0 256 256" fill="none" {...props}>
-      <circle cx={125} cy={125} r={125} className="logo--bg" />
-      <g className="logo--fg">
-        <rect
-          transform="skewX(-15)"
-          width={55.5}
-          height={100}
-          x={100}
-          y={75}
-        />
-        <rect
-          transform="skewX(-15)"
-          width={55.5}
-          height={45}
-          x={165.5}
-          y={75}
-        />
-        <rect
-          transform="skewX(-15)"
-          width={55.5}
-          height={45}
-          x={165.5}
-          y={130}
-        />
-      </g>
-    </BrandLogo>
-  )
+interface IBrandLogoProps {
+
 }
+
+const LogoLink = styled.a`
+  line-height: 0;
+`
+
+const BrandLogo = React.forwardRef<HTMLAnchorElement, IBrandLogoProps>((props, ref) => {
+  return (
+    <LogoLink {...props} ref={ref}>
+      <LogoStyle width={35} height={35} viewBox="0 0 256 256">
+        <circle cx={125} cy={125} r={125}
+          className="logo--bg"
+        />
+        <g>
+          <rect
+            className="logo--fg"
+            transform="skewX(-15)"
+            width={55.5}
+            height={100}
+            x={100}
+            y={75}
+          />
+          <rect
+            className="logo--fg"
+            transform="skewX(-15)"
+            width={55.5}
+            height={45}
+            x={165.5}
+            y={75}
+          />
+          <rect
+            className="logo--fg"
+            transform="skewX(-15)"
+            width={55.5}
+            height={45}
+            x={165.5}
+            y={130}
+          />
+        </g>
+      </LogoStyle>
+    </LogoLink>
+  )
+})
+
+export default BrandLogo
