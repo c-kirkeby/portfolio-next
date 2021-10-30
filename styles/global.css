@@ -41,6 +41,7 @@
   --secondary: var(--cyan);
   --black: var(--black);
   --muted: var(--grey);
+  --shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px;
   @media (prefers-color-scheme: dark) {
     --primary: var(--cyan);
     --background: var(--black);
@@ -48,6 +49,7 @@
     --secondary: var(--purple);
     --black: var(--black);
     --muted: var(--grey);
+    --shadow: none;
   }
 
   /* Font Families */
