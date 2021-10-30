@@ -1,53 +1,35 @@
-import { useState } from 'react'
-import styled from 'styled-components'
-import { Logo, BrandLink } from './Brand'
-import { NavToggle, NavBar } from './Nav'
-
-const StyledHeader = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  @media only screen and (max-width: 768px) {
-    align-items: stretch;
-  }
-  padding: 0.75rem 1.5rem;
-`
-
-// const BrandTitle = styled.span`
-//   font-size: 3rem;
-//   text-transform: uppercase;
-
-// `
-
-const NavAside = styled.div<HeaderMenuProps>`
-  display: flex;
-  flex-direction: column;
-  @media only screen and (max-width: 768px) {
-    max-width: 135px;
-  }
-`
-
-export interface HeaderProps {
-  isMenuOpen: boolean,
-  onClick: Function
-}
-
-export type HeaderMenuProps = Pick<HeaderProps, "isMenuOpen">
+import React from "react";
+import Link from "next/link";
+import styles from "./Header.module.scss";
+import Logo from "./Logo";
 
 const Header = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false)
   return (
-    <StyledHeader>
-      <BrandLink href="/">
-        <Logo alt="site logo" />
-        {/* <BrandTitle>Christian Kirkeby</BrandTitle> */}
-      </BrandLink>
-      <NavAside isMenuOpen={isMenuOpen}>
-        <NavToggle isMenuOpen={isMenuOpen} onClick={() => setMenuOpen(!isMenuOpen)} />
-        <NavBar isMenuOpen={isMenuOpen} />
-      </NavAside>
-    </StyledHeader>
-  )
-}
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <Link passHref href="/">
+          <a className={styles[`logo-link`]}>
+            <Logo />
+          </a>
+        </Link>
+        <div className={styles.spacer}></div>
+        <div className={styles.links}>
+          {/* <Link href="/">
+              <a className={styles[`nav-link`]}>Home</a>
+            </Link> */}
+          <Link href="/blog">
+            <a className={styles[`nav-link`]}>Blog</a>
+          </Link>
+          <Link href="/portfolio">
+            <a className={styles[`nav-link`]}>Portfolio</a>
+          </Link>
+          <Link href="/contact">
+            <a className={styles[`nav-link`]}>Contact</a>
+          </Link>
+        </div>
+      </nav>
+    </header>
+  );
+};
 
-export default Header
+export default Header;

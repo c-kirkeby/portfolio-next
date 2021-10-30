@@ -1,0 +1,130 @@
+@font-face {
+  font-family: "Metropolis";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/Metropolis-Bold.woff2") format("woff2"),
+    url("/Metropolis-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/Inter-Regular.woff2") format("woff2"),
+    url("/Inter-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/Inter-Bold.woff2") format("woff2"),
+    url("/Inter-Bold.woff") format("woff");
+}
+
+:root {
+  /* Colours */
+  --purple: #6308fb;
+  --darkPurple: #341748;
+  --black: #18013d;
+  --white: #fefefe;
+  --cyan: #1effff;
+  --grey: #857d7d;
+
+  /* Theming */
+  --primary: var(--purple);
+  --background: var(--white);
+  --text: var(--darkPurple);
+  --secondary: var(--cyan);
+  --black: var(--black);
+  --muted: var(--grey);
+  --shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px;
+  @media (prefers-color-scheme: dark) {
+    --primary: var(--cyan);
+    --background: var(--black);
+    --text: var(--white);
+    --secondary: var(--purple);
+    --black: var(--black);
+    --muted: var(--grey);
+    --shadow: none;
+  }
+
+  /* Font Families */
+  --heading-fonts: "Metropolis", Frutiger, "Frutiger Linotype", Univers, Calibri,
+    "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed",
+    "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
+  --body-fonts: "Inter", Frutiger, "Frutiger Linotype", Univers, Calibri,
+    "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed",
+    "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
+  --monospace-fonts: "Cascadia Code, Fira Code, Consolas, Menlo, monospace"
+
+  /* Transitions */
+  --colour-mode-transition: background-color 0.2s ease-in-out, fill 0.2s ease-in-out, color 0.2s ease-in-out;
+  --headroom-transition: background-color 0.25s ease-in-out;
+  @media screen and (prefers-reduced-motion: reduce): {
+    * {
+      animationduration: 0.001ms !important;
+      animationiterationcount: 1 !important;
+      transitionduration: 0.001ms !important;
+    }
+  }
+}
+
+html {
+  /* Font Faces */
+  letter-spacing: -0.176px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
+}
+body {
+  /* Helvetica-based font stack: https://css-tricks.com/snippets/css/font-stacks/ */
+  font-family: var(--body-fonts);
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+a {
+  text-decoration: underline;
+  color: var(--primary);
+}
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--text);
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--heading-fonts);
+  line-height: 1.125;
+}
+p,
+a,
+span {
+  line-height: 1.6;
+}
+code,
+pre {
+  font-family: var(--monospace-fonts);
+}
