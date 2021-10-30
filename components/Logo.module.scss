@@ -1,0 +1,14 @@
+.background {
+  fill: var(--primary);
+}
+.foreground {
+  fill: var(--background);
+}
+.logo {
+  &:hover {
+    .background {
+      transition: filter 0.2s;
+      filter: brightness(75%);
+    }
+  }
+}

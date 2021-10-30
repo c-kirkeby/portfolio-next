@@ -1,40 +1,35 @@
-import styled from 'styled-components'
-import { Logo, BrandLink } from './Brand'
-import { NavBar } from './Nav'
-import ColourToggle from './ColourToggle'
+import React from "react";
+import Link from "next/link";
+import styles from "./Header.module.scss";
+import Logo from "./Logo";
 
-const StyledHeader = styled.header`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70px;
-  padding: 0.75rem 1rem;
-  margin: 0 auto;
-`
-
-const HeaderInner = styled.div`
-  width: 900px;
-  display: flex;
-`
-
-const HeaderSpacer = styled.div`
-  margin: 0 auto;
-`
-
-const Header = ({ themeToggle, ...props }) => {
+const Header = () => {
   return (
-    <StyledHeader>
-      <HeaderInner>
-        <BrandLink passHref href="/">
-          <Logo alt="site logo" />
-          {/* <BrandTitle>Christian Kirkeby</BrandTitle> */}
-        </BrandLink>
-        <HeaderSpacer></HeaderSpacer>
-        <NavBar />
-        <ColourToggle />
-      </HeaderInner>
-    </StyledHeader>
-  )
-}
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <Link passHref href="/">
+          <a className={styles[`logo-link`]}>
+            <Logo />
+          </a>
+        </Link>
+        <div className={styles.spacer}></div>
+        <div className={styles.links}>
+          {/* <Link href="/">
+              <a className={styles[`nav-link`]}>Home</a>
+            </Link> */}
+          <Link href="/blog">
+            <a className={styles[`nav-link`]}>Blog</a>
+          </Link>
+          <Link href="/portfolio">
+            <a className={styles[`nav-link`]}>Portfolio</a>
+          </Link>
+          <Link href="/contact">
+            <a className={styles[`nav-link`]}>Contact</a>
+          </Link>
+        </div>
+      </nav>
+    </header>
+  );
+};
 
-export default Header
+export default Header;
