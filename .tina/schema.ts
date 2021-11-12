@@ -1,66 +1,65 @@
-
 import { defineSchema } from "@tinacms/cli";
 
 export default defineSchema({
   collections: [
     {
-      label: 'Blog Posts',
-      name: 'post',
-      path: '_posts',
+      label: "Blog Posts",
+      name: "posts",
+      path: "content/posts",
       fields: [
         {
-          type: 'string',
-          label: 'Title',
-          name: 'title',
+          type: "string",
+          label: "Title",
+          name: "title",
         },
         {
-          type: 'string',
-          label: 'Excerpt',
-          name: 'excerpt',
+          type: "string",
+          label: "Excerpt",
+          name: "excerpt",
         },
         {
-          type: 'string',
-          label: 'Cover Image',
-          name: 'coverImage',
+          type: "string",
+          label: "Cover Image",
+          name: "coverImage",
         },
         {
-          type: 'string',
-          label: 'Date',
-          name: 'date',
+          type: "string",
+          label: "Date",
+          name: "date",
         },
         {
-          type: 'object',
-          label: 'Author',
-          name: 'author',
+          type: "object",
+          label: "Author",
+          name: "author",
           fields: [
             {
-              type: 'string',
-              label: 'Name',
-              name: 'name',
+              type: "string",
+              label: "Name",
+              name: "name",
             },
             {
-              type: 'string',
-              label: 'Picture',
-              name: 'picture',
+              type: "string",
+              label: "Picture",
+              name: "picture",
             },
           ],
         },
         {
-          type: 'object',
-          label: 'OG Image',
-          name: 'ogImage',
+          type: "object",
+          label: "OG Image",
+          name: "ogImage",
           fields: [
             {
-              type: 'string',
-              label: 'Url',
-              name: 'url',
+              type: "string",
+              label: "Url",
+              name: "url",
             },
           ],
         },
         {
-          type: 'string',
-          label: 'Body',
-          name: 'body',
+          type: "rich-text",
+          label: "Body",
+          name: "body",
           isBody: true,
         },
       ],

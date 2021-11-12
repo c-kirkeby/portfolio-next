@@ -66,8 +66,8 @@ export type Query = {
   getDocument: DocumentNode;
   getDocumentList: DocumentConnection;
   getDocumentFields: Scalars['JSON'];
-  getPostDocument: PostDocument;
-  getPostList: PostConnection;
+  getPostsDocument: PostsDocument;
+  getPostsList: PostsConnection;
 };
 
 
@@ -95,12 +95,12 @@ export type QueryGetDocumentListArgs = {
 };
 
 
-export type QueryGetPostDocumentArgs = {
+export type QueryGetPostsDocumentArgs = {
   relativePath?: Maybe<Scalars['String']>;
 };
 
 
-export type QueryGetPostListArgs = {
+export type QueryGetPostsListArgs = {
   before?: Maybe<Scalars['String']>;
   after?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
@@ -141,51 +141,51 @@ export type CollectionDocumentsArgs = {
   last?: Maybe<Scalars['Int']>;
 };
 
-export type DocumentNode = PostDocument;
+export type DocumentNode = PostsDocument;
 
-export type PostAuthor = {
-  __typename?: 'PostAuthor';
+export type PostsAuthor = {
+  __typename?: 'PostsAuthor';
   name?: Maybe<Scalars['String']>;
   picture?: Maybe<Scalars['String']>;
 };
 
-export type PostOgImage = {
-  __typename?: 'PostOgImage';
+export type PostsOgImage = {
+  __typename?: 'PostsOgImage';
   url?: Maybe<Scalars['String']>;
 };
 
-export type Post = {
-  __typename?: 'Post';
+export type Posts = {
+  __typename?: 'Posts';
   title?: Maybe<Scalars['String']>;
   excerpt?: Maybe<Scalars['String']>;
   coverImage?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
-  author?: Maybe<PostAuthor>;
-  ogImage?: Maybe<PostOgImage>;
-  body?: Maybe<Scalars['String']>;
+  author?: Maybe<PostsAuthor>;
+  ogImage?: Maybe<PostsOgImage>;
+  body?: Maybe<Scalars['JSON']>;
 };
 
-export type PostDocument = Node & Document & {
-  __typename?: 'PostDocument';
+export type PostsDocument = Node & Document & {
+  __typename?: 'PostsDocument';
   id: Scalars['ID'];
   sys: SystemInfo;
-  data: Post;
+  data: Posts;
   form: Scalars['JSON'];
   values: Scalars['JSON'];
   dataJSON: Scalars['JSON'];
 };
 
-export type PostConnectionEdges = {
-  __typename?: 'PostConnectionEdges';
+export type PostsConnectionEdges = {
+  __typename?: 'PostsConnectionEdges';
   cursor?: Maybe<Scalars['String']>;
-  node?: Maybe<PostDocument>;
+  node?: Maybe<PostsDocument>;
 };
 
-export type PostConnection = Connection & {
-  __typename?: 'PostConnection';
+export type PostsConnection = Connection & {
+  __typename?: 'PostsConnection';
   pageInfo?: Maybe<PageInfo>;
   totalCount: Scalars['Int'];
-  edges?: Maybe<Array<Maybe<PostConnectionEdges>>>;
+  edges?: Maybe<Array<Maybe<PostsConnectionEdges>>>;
 };
 
 export type Mutation = {
@@ -193,8 +193,8 @@ export type Mutation = {
   addPendingDocument: DocumentNode;
   updateDocument: DocumentNode;
   createDocument: DocumentNode;
-  updatePostDocument: PostDocument;
-  createPostDocument: PostDocument;
+  updatePostsDocument: PostsDocument;
+  createPostsDocument: PostsDocument;
 };
 
 
@@ -219,37 +219,37 @@ export type MutationCreateDocumentArgs = {
 };
 
 
-export type MutationUpdatePostDocumentArgs = {
+export type MutationUpdatePostsDocumentArgs = {
   relativePath: Scalars['String'];
-  params: PostMutation;
+  params: PostsMutation;
 };
 
 
-export type MutationCreatePostDocumentArgs = {
+export type MutationCreatePostsDocumentArgs = {
   relativePath: Scalars['String'];
-  params: PostMutation;
+  params: PostsMutation;
 };
 
 export type DocumentMutation = {
-  post?: Maybe<PostMutation>;
+  posts?: Maybe<PostsMutation>;
 };
 
-export type PostAuthorMutation = {
+export type PostsAuthorMutation = {
   name?: Maybe<Scalars['String']>;
   picture?: Maybe<Scalars['String']>;
 };
 
-export type PostOgImageMutation = {
+export type PostsOgImageMutation = {
   url?: Maybe<Scalars['String']>;
 };
 
-export type PostMutation = {
+export type PostsMutation = {
   title?: Maybe<Scalars['String']>;
   excerpt?: Maybe<Scalars['String']>;
   coverImage?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
-  author?: Maybe<PostAuthorMutation>;
-  ogImage?: Maybe<PostOgImageMutation>;
-  body?: Maybe<Scalars['String']>;
+  author?: Maybe<PostsAuthorMutation>;
+  ogImage?: Maybe<PostsOgImageMutation>;
+  body?: Maybe<Scalars['JSON']>;
 };
 

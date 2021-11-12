@@ -2,8 +2,8 @@
   "collections": [
     {
       "label": "Blog Posts",
-      "name": "post",
-      "path": "_posts",
+      "name": "posts",
+      "path": "content/posts",
       "fields": [
         {
           "type": "string",
@@ -55,7 +55,7 @@
           ]
         },
         {
-          "type": "string",
+          "type": "rich-text",
           "label": "Body",
           "name": "body",
           "isBody": true

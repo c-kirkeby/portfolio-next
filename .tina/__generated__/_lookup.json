@@ -3,7 +3,7 @@
     "type": "DocumentConnection",
     "resolveType": "multiCollectionDocumentList",
     "collections": [
-      "post"
+      "posts"
     ]
   },
   "Node": {

@@ -2,15 +2,15 @@
   "collections": [
     {
       "label": "Blog Posts",
-      "name": "post",
-      "path": "_posts",
+      "name": "posts",
+      "path": "content/posts",
       "fields": [
         {
           "type": "string",
           "label": "Title",
           "name": "title",
           "namespace": [
-            "post",
+            "posts",
             "title"
           ]
         },
@@ -19,7 +19,7 @@
           "label": "Excerpt",
           "name": "excerpt",
           "namespace": [
-            "post",
+            "posts",
             "excerpt"
           ]
         },
@@ -28,7 +28,7 @@
           "label": "Cover Image",
           "name": "coverImage",
           "namespace": [
-            "post",
+            "posts",
             "coverImage"
           ]
         },
@@ -37,7 +37,7 @@
           "label": "Date",
           "name": "date",
           "namespace": [
-            "post",
+            "posts",
             "date"
           ]
         },
@@ -51,7 +51,7 @@
               "label": "Name",
               "name": "name",
               "namespace": [
-                "post",
+                "posts",
                 "author",
                 "name"
               ]
@@ -61,14 +61,14 @@
               "label": "Picture",
               "name": "picture",
               "namespace": [
-                "post",
+                "posts",
                 "author",
                 "picture"
               ]
             }
           ],
           "namespace": [
-            "post",
+            "posts",
             "author"
           ]
         },
@@ -82,30 +82,30 @@
               "label": "Url",
               "name": "url",
               "namespace": [
-                "post",
+                "posts",
                 "ogImage",
                 "url"
               ]
             }
           ],
           "namespace": [
-            "post",
+            "posts",
             "ogImage"
           ]
         },
         {
-          "type": "string",
+          "type": "rich-text",
           "label": "Body",
           "name": "body",
           "isBody": true,
           "namespace": [
-            "post",
+            "posts",
             "body"
           ]
         }
       ],
       "namespace": [
-        "post"
+        "posts"
       ]
     }
   ],
