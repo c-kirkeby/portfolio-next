@@ -1,14 +1,15 @@
-import { staticRequest, getStaticPropsForTina } from "tinacms";
+import { staticRequest, getStaticPropsForTina, gql } from "tinacms";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import NotFoundPage from "pages/404";
 import Page from "../../components/Page";
 import styles from "styles/post.module.css";
+import { epochToLocaleDateString } from "lib/dateUtil";
 
 export async function getStaticPaths() {
   const postsListData = await staticRequest({
-    query: `
+    query: gql`
       query {
         getPostsList {
           edges {
@@ -35,7 +36,7 @@ export const getStaticProps = async ({ params }) => {
   const { slug } = params;
   const variables = { relativePath: `${slug}.mdx` };
   const tinaProps = await getStaticPropsForTina({
-    query: `
+    query: gql`
       query BlogPostQuery($relativePath: String!) {
         getPostsDocument(relativePath: $relativePath) {
           data {
@@ -60,7 +61,7 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: {
-      ...tinaProps, // {data: {...}, query: '...', variables: {...}}
+      ...tinaProps,
       slug,
     },
   };
@@ -84,15 +85,10 @@ export default function Post({ data, slug }) {
         ) : (
           <>
             <article>
-              <Head>
-                <title>{title} | Next.js Blog Example with</title>
-                {/* <meta property="og:image" content={ogImage.url} /> */}
-              </Head>
               <div>
-                {title}
+                <h1>{title}</h1>
                 {coverImage ? coverImage : null}
-                {date}
-                {author}
+                <div><span>{epochToLocaleDateString(date, 'en-AU')}</span><span>{author}</span></div>
               </div>
               <TinaMarkdown content={body} />
             </article>

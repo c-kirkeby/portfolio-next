@@ -27,17 +27,5 @@
     "type": "PostsConnection",
     "resolveType": "collectionDocumentList",
     "collection": "posts"
-  },
-  "PostDocument": {
-    "type": "PostDocument",
-    "resolveType": "collectionDocument",
-    "collection": "post",
-    "createPostDocument": "create",
-    "updatePostDocument": "update"
-  },
-  "PostConnection": {
-    "type": "PostConnection",
-    "resolveType": "collectionDocumentList",
-    "collection": "post"
   }
 }

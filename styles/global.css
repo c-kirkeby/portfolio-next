@@ -61,7 +61,7 @@
     "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed",
     "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue",
     Helvetica, Arial, sans-serif;
-  --monospace-fonts: "Cascadia Code, Fira Code, Consolas, Menlo, monospace"
+  --monospace-fonts: "Cascadia Code", "Fira Code", Consolas, Menlo, monospace;
 
   /* Transitions */
   --colour-mode-transition: background-color 0.2s ease-in-out, fill 0.2s ease-in-out, color 0.2s ease-in-out;

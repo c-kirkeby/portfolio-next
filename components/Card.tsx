@@ -2,12 +2,19 @@ import React from "react";
 import styles from "./Card.module.css";
 import Link from "next/link";
 
-const Card = ({ title, content }) => {
+interface CardProps {
+  title?: string;
+  content: string;
+  className?: string;
+  link?: string;
+}
+
+const Card = ({ title = 'test', content, className, link = undefined, ...props }: CardProps): JSX.Element => {
   return (
-    <div className={styles.card}>
+    <div className={className ? [styles.card, className].join(' ') : styles.card} {...props}>
       <h2 className={styles[`card-title`]}>{title}</h2>
       <p className={styles[`card-text`]}>{content}</p>
-      <Link href="/blog/1">Read more</Link>
+      {link ? <Link href={link}>Read more</Link> : <></>}
     </div>
   );
 };
