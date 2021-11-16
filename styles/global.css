@@ -38,6 +38,7 @@
   --primary: var(--purple);
   --background: var(--white);
   --text: var(--darkPurple);
+  --codeBg: #292d3e;
   --secondary: var(--cyan);
   --black: var(--black);
   --muted: var(--grey);
@@ -127,4 +128,11 @@ span {
 code,
 pre {
   font-family: var(--monospace-fonts);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: #292d3e;
+  box-shadow: rgba(39, 44, 49, 0.06) 8px 14px 38px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
+}
+pre > .token-line > span {
+  color: #a6accd;
 }

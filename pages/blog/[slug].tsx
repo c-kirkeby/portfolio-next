@@ -1,7 +1,7 @@
 import { staticRequest, getStaticPropsForTina, gql } from "tinacms";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
+// import { TinaMarkdown } from "tinacms/dist/rich-text";
+import MDX from "../../components/MDX";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import NotFoundPage from "pages/404";
 import Page from "../../components/Page";
 import styles from "styles/post.module.css";
@@ -14,13 +14,13 @@ export async function getStaticPaths() {
         getPostsList {
           edges {
             node {
-            sys {
-              filename
+              sys {
+                filename
               }
             }
           }
+        }
       }
-    }
     `,
     variables: {},
   });
@@ -67,10 +67,8 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-const Button = () => <button>Press me</button>;
-
 export default function Post({ data, slug }) {
-  const { title, coverImage, date, author, body, _ogImage } =
+  const { title, coverImage, date, author, body, ogImage } =
     data.getPostsDocument.data;
   const router = useRouter();
 
@@ -88,9 +86,12 @@ export default function Post({ data, slug }) {
               <div>
                 <h1>{title}</h1>
                 {coverImage ? coverImage : null}
-                <div><span>{epochToLocaleDateString(date, 'en-AU')}</span><span>{author}</span></div>
+                <div>
+                  <span>{epochToLocaleDateString(date, "en-AU")}</span>
+                  <span>{author}</span>
+                </div>
               </div>
-              <TinaMarkdown content={body} />
+              <MDX content={body} />
             </article>
           </>
         )}

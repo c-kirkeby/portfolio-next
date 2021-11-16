@@ -61,6 +61,28 @@ export default defineSchema({
           label: "Body",
           name: "body",
           isBody: true,
+          templates: [
+            {
+              name: "Code",
+              label: "Code",
+              fields: [
+                {
+                  name: "lang",
+                  label: "Language",
+                  type: "string",
+                  // options: ["js", "go"],
+                },
+                {
+                  name: "code",
+                  label: "Code",
+                  type: "string",
+                  ui: {
+                    component: "textarea",
+                  },
+                },
+              ],
+            },
+          ],
         },
       ],
     },

@@ -98,6 +98,44 @@
           "label": "Body",
           "name": "body",
           "isBody": true,
+          "templates": [
+            {
+              "name": "Code",
+              "label": "Code",
+              "fields": [
+                {
+                  "name": "lang",
+                  "label": "Language",
+                  "type": "string",
+                  "namespace": [
+                    "posts",
+                    "body",
+                    "Code",
+                    "lang"
+                  ]
+                },
+                {
+                  "name": "code",
+                  "label": "Code",
+                  "type": "string",
+                  "ui": {
+                    "component": "textarea"
+                  },
+                  "namespace": [
+                    "posts",
+                    "body",
+                    "Code",
+                    "code"
+                  ]
+                }
+              ],
+              "namespace": [
+                "posts",
+                "body",
+                "Code"
+              ]
+            }
+          ],
           "namespace": [
             "posts",
             "body"

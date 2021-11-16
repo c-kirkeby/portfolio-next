@@ -1,4 +1,4 @@
-import { getStaticPropsForTina, gql } from 'tinacms'
+import { getStaticPropsForTina, gql } from "tinacms";
 import Card from "../components/Card";
 import Page from "../components/Page";
 import styles from "../styles/blog.module.css";
@@ -28,7 +28,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      ...tinaProps
+      ...tinaProps,
     },
   };
 };
@@ -46,13 +46,13 @@ const BlogPage = (props) => {
               className={styles.post}
               title={post.node.data.title}
               content={post.node.data.excerpt}
-              link={post.node.sys.filename}
+              link={`/blog/${post.node.sys.filename}`}
             />
           ))}
         </section>
       </div>
     </Page>
   );
-}
+};
 
 export default BlogPage;

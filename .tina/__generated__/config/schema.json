@@ -58,7 +58,28 @@
           "type": "rich-text",
           "label": "Body",
           "name": "body",
-          "isBody": true
+          "isBody": true,
+          "templates": [
+            {
+              "name": "Code",
+              "label": "Code",
+              "fields": [
+                {
+                  "name": "lang",
+                  "label": "Language",
+                  "type": "string"
+                },
+                {
+                  "name": "code",
+                  "label": "Code",
+                  "type": "string",
+                  "ui": {
+                    "component": "textarea"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }
