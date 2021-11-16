@@ -1,13 +1,7 @@
-import mdx from "@next/mdx";
-// import remarkHighlight from "remark-highlight.js";
-
-const withMDX = mdx({
-  extension: /\.mdx?$/,
-  options: {
-    // remarkPlugins: [remarkHighlight],
+const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
   },
-});
+};
 
-export default withMDX({
-  pageExtensions: ["tsx", "js", "md", "mdx"],
-});
+export default nextConfig;
