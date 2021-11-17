@@ -38,7 +38,9 @@ export async function getStaticPaths() {
     paths: postsListData.getPostsList.edges.map((edge) => ({
       params: { slug: edge.node.sys.filename },
     })),
-    fallback: false,
+    // When creating a new document, this will allow you to see it
+    // before it's fully deployed if you're in edit-mode.
+    fallback: "blocking",
   };
 }
 
