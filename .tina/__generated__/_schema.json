@@ -104,14 +104,14 @@
               "label": "Code",
               "fields": [
                 {
-                  "name": "lang",
+                  "name": "language",
                   "label": "Language",
                   "type": "string",
                   "namespace": [
                     "posts",
                     "body",
                     "Code",
-                    "lang"
+                    "language"
                   ]
                 },
                 {

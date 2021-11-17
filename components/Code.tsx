@@ -1,16 +1,18 @@
 // import React from "react";
-import { mdx } from "@mdx-js/react";
-
-// import React from "react";
-import Highlight, { defaultProps } from "prism-react-renderer";
+import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import prismTheme from "prism-react-renderer/themes/palenight";
 
-const Code = ({ children, lang = "markup" }) => {
+export interface CodeProps {
+  children: string;
+  language?: Language;
+}
+
+const Code = ({ children, language = "markup" }: CodeProps) => {
   return (
     <Highlight
       {...defaultProps}
-      code={children.trim()}
-      language={lang}
+      code={children?.trim()}
+      language={language}
       theme={prismTheme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (

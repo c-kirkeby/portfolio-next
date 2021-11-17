@@ -65,7 +65,7 @@
               "label": "Code",
               "fields": [
                 {
-                  "name": "lang",
+                  "name": "language",
                   "label": "Language",
                   "type": "string"
                 },

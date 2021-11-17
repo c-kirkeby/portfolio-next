@@ -1,7 +1,8 @@
 import { getStaticPropsForTina, gql } from "tinacms";
 import Card from "../components/Card";
 import Page from "../components/Page";
-import styles from "../styles/blog.module.css";
+import styles from "styles/blog.module.css";
+import { BlogPostList } from "interfaces/blog.interface";
 
 export const getStaticProps = async () => {
   const tinaProps = await getStaticPropsForTina({
@@ -33,7 +34,11 @@ export const getStaticProps = async () => {
   };
 };
 
-const BlogPage = (props) => {
+export interface BlogPageProps {
+  [key: string]: BlogPostList;
+}
+
+const BlogPage = (props: BlogPageProps) => {
   const posts = props.data.getPostsList.edges;
   return (
     <Page title={`Posts · Christian Kirkeby`}>

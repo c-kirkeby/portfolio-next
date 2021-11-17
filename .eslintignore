@@ -1,0 +1,16 @@
+# Dependencies
+/node_modules
+
+# Next.JS Files
+/.next
+/out
+
+# Production
+/build
+
+# Vercel files
+/.vercel
+
+# TinaCMS files
+/pages/exit_admin.js
+/pages/admin.js

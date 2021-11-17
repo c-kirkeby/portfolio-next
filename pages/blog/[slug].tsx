@@ -1,14 +1,22 @@
 import { staticRequest, getStaticPropsForTina, gql } from "tinacms";
-// import { TinaMarkdown } from "tinacms/dist/rich-text";
-import MDX from "../../components/MDX";
 import { useRouter } from "next/router";
+import MDX from "components/MDX";
+import Page from "components/Page";
 import NotFoundPage from "pages/404";
-import Page from "../../components/Page";
 import styles from "styles/post.module.css";
 import { epochToLocaleDateString } from "lib/dateUtil";
+import { BlogPostData, BlogPostList } from "interfaces/blog.interface";
+
+interface BlogPostParams {
+  params: {
+    slug: "string";
+  };
+}
 
 export async function getStaticPaths() {
-  const postsListData = await staticRequest({
+  // @todo - raise issue with TinaCMS team to change type signature.
+  // @ts-ignore
+  const postsListData: BlogPostList[] = await staticRequest({
     query: gql`
       query {
         getPostsList {
@@ -25,6 +33,8 @@ export async function getStaticPaths() {
     variables: {},
   });
   return {
+    // @todo - raise issue with TinaCMS team to change type signature.
+    // @ts-ignore
     paths: postsListData.getPostsList.edges.map((edge) => ({
       params: { slug: edge.node.sys.filename },
     })),
@@ -32,7 +42,7 @@ export async function getStaticPaths() {
   };
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: BlogPostParams) => {
   const { slug } = params;
   const variables = { relativePath: `${slug}.mdx` };
   const tinaProps = await getStaticPropsForTina({
@@ -67,9 +77,17 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-export default function Post({ data, slug }) {
-  const { title, coverImage, date, author, body, ogImage } =
-    data.getPostsDocument.data;
+interface BlogPostProps {
+  slug: string;
+  data: {
+    getPostsDocument: {
+      data: BlogPostData;
+    };
+  };
+}
+
+export default function Post({ data, slug }: BlogPostProps) {
+  const { title, coverImage, date, author, body } = data.getPostsDocument.data;
   const router = useRouter();
 
   if (!router.isFallback && !slug) {

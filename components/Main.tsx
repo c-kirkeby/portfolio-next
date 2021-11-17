@@ -1,12 +1,11 @@
-import React from 'react'
-import styles from './Main.module.css'
+import styles from "components/Main.module.css";
 
-const Main = ({ children }) => {
-  return (
-    <main className={styles.main}>
-      {children}
-    </main>
-  )
+interface MainProps {
+  children: React.ReactNode;
 }
 
-export default Main
+const Main = ({ children }: MainProps) => {
+  return <main className={styles.main}>{children}</main>;
+};
+
+export default Main;

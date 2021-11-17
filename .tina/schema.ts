@@ -67,7 +67,7 @@ export default defineSchema({
               label: "Code",
               fields: [
                 {
-                  name: "lang",
+                  name: "language",
                   label: "Language",
                   type: "string",
                   // options: ["js", "go"],
