@@ -1,9 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
+    "dev": "npm run tina-dev",
+    "build": "npm run tina-build",
+    "start": "npm run tina-start",
+    "export": "next export",
     "lint": "next lint --fix && tsc",
     "tina-dev": "tinacms server:start -c \"next dev\"",
     "tina-build": "tinacms server:start -c \"next build\"",
