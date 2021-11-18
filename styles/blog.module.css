@@ -1,17 +1,17 @@
 .posts-container {
-    max-width: 900px;
-    margin: 0 auto;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .heading {
-    margin: 1.5rem 1.5rem;
+  margin: 1.5rem 1.5rem;
 }
 
 .posts {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .post {
-    flex: 1 1 300px;
+  flex: 1 1 300px;
 }

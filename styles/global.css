@@ -82,6 +82,7 @@ html {
   letter-spacing: -0.176px;
   box-sizing: border-box;
   font-size: 16px;
+  overflow-y: scroll;
 }
 @supports (font-variation-settings: normal) {
   html {

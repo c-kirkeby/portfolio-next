@@ -1,6 +1,9 @@
-# Directories
+# Node
 node_modules/
+
+# Next.js
 .next/
+out/
 
 # Package manager files
 yarn-error.log

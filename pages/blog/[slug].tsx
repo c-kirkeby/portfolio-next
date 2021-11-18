@@ -102,12 +102,14 @@ export default function Post({ data, slug }: BlogPostProps) {
           <h1>Loading…</h1>
         ) : (
           <>
-            <article>
+            <article className={styles.article}>
               <div>
-                <h1>{title}</h1>
+                <h1 className={styles.heading}>{title}</h1>
                 {coverImage ? coverImage : null}
                 <div>
-                  <span>{epochToLocaleDateString(date, "en-AU")}</span>
+                  <span className={styles["post-date"]}>
+                    {epochToLocaleDateString(date, "en-AU")}
+                  </span>
                   <span>{author}</span>
                 </div>
               </div>
