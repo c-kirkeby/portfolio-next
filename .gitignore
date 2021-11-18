@@ -1,6 +1,16 @@
-# Directories
+# Node
 node_modules/
+
+# Next.js
 .next/
+out/
 
 # Package manager files
 yarn-error.log
+.vercel
+
+# Typescript files
+tsconfig.tsbuildinfo
+
+# TypeScript transpiled files
+*.js.map

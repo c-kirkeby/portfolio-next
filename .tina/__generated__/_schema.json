@@ -1,0 +1,151 @@
+{
+  "collections": [
+    {
+      "label": "Blog Posts",
+      "name": "posts",
+      "path": "content/posts",
+      "fields": [
+        {
+          "type": "string",
+          "label": "Title",
+          "name": "title",
+          "namespace": [
+            "posts",
+            "title"
+          ]
+        },
+        {
+          "type": "string",
+          "label": "Excerpt",
+          "name": "excerpt",
+          "namespace": [
+            "posts",
+            "excerpt"
+          ]
+        },
+        {
+          "type": "string",
+          "label": "Cover Image",
+          "name": "coverImage",
+          "namespace": [
+            "posts",
+            "coverImage"
+          ]
+        },
+        {
+          "type": "string",
+          "label": "Date",
+          "name": "date",
+          "namespace": [
+            "posts",
+            "date"
+          ]
+        },
+        {
+          "type": "object",
+          "label": "Author",
+          "name": "author",
+          "fields": [
+            {
+              "type": "string",
+              "label": "Name",
+              "name": "name",
+              "namespace": [
+                "posts",
+                "author",
+                "name"
+              ]
+            },
+            {
+              "type": "string",
+              "label": "Picture",
+              "name": "picture",
+              "namespace": [
+                "posts",
+                "author",
+                "picture"
+              ]
+            }
+          ],
+          "namespace": [
+            "posts",
+            "author"
+          ]
+        },
+        {
+          "type": "object",
+          "label": "OG Image",
+          "name": "ogImage",
+          "fields": [
+            {
+              "type": "string",
+              "label": "Url",
+              "name": "url",
+              "namespace": [
+                "posts",
+                "ogImage",
+                "url"
+              ]
+            }
+          ],
+          "namespace": [
+            "posts",
+            "ogImage"
+          ]
+        },
+        {
+          "type": "rich-text",
+          "label": "Body",
+          "name": "body",
+          "isBody": true,
+          "templates": [
+            {
+              "name": "Code",
+              "label": "Code",
+              "fields": [
+                {
+                  "name": "language",
+                  "label": "Language",
+                  "type": "string",
+                  "namespace": [
+                    "posts",
+                    "body",
+                    "Code",
+                    "language"
+                  ]
+                },
+                {
+                  "name": "code",
+                  "label": "Code",
+                  "type": "string",
+                  "ui": {
+                    "component": "textarea"
+                  },
+                  "namespace": [
+                    "posts",
+                    "body",
+                    "Code",
+                    "code"
+                  ]
+                }
+              ],
+              "namespace": [
+                "posts",
+                "body",
+                "Code"
+              ]
+            }
+          ],
+          "namespace": [
+            "posts",
+            "body"
+          ]
+        }
+      ],
+      "namespace": [
+        "posts"
+      ]
+    }
+  ],
+  "namespace": []
+}

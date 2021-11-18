@@ -1,23 +1,35 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "npm run tina-dev",
+    "build": "npm run tina-build",
+    "start": "npm run tina-start",
+    "export": "next export",
+    "lint": "next lint --fix && tsc",
+    "tina-dev": "tinacms server:start -c \"next dev\"",
+    "tina-build": "tinacms server:start -c \"next build\"",
+    "tina-start": "tinacms server:start -c \"next start\""
   },
   "devDependencies": {
-    "@types/react": "^17.0.33",
-    "eslint": "7.32.0",
-    "eslint-config-next": "12.0.1",
+    "@types/react": "^17.0.35",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "12.0.4",
     "eslint-config-prettier": "^8.3.0",
     "typescript": "^4.4.4"
   },
   "dependencies": {
+    "@mdx-js/loader": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "@tinacms/cli": "^0.56.4",
     "next": "latest",
     "next-dark-mode": "^3.0.0",
+    "prism-react-renderer": "^1.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "sass": "^1.43.4"
+    "sass": "^1.43.4",
+    "styled-components": "^5.3.3",
+    "tinacms": "^0.57.3"
   }
 }

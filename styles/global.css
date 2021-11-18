@@ -38,6 +38,7 @@
   --primary: var(--purple);
   --background: var(--white);
   --text: var(--darkPurple);
+  --codeBg: #292d3e;
   --secondary: var(--cyan);
   --black: var(--black);
   --muted: var(--grey);
@@ -61,12 +62,13 @@
     "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed",
     "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue",
     Helvetica, Arial, sans-serif;
-  --monospace-fonts: "Cascadia Code, Fira Code, Consolas, Menlo, monospace"
+  --monospace-fonts: "Cascadia Code", "Fira Code", Consolas, Menlo, monospace;
 
   /* Transitions */
-  --colour-mode-transition: background-color 0.2s ease-in-out, fill 0.2s ease-in-out, color 0.2s ease-in-out;
+  --colour-mode-transition: background-color 0.2s ease-in-out,
+    fill 0.2s ease-in-out, color 0.2s ease-in-out;
   --headroom-transition: background-color 0.25s ease-in-out;
-  @media screen and (prefers-reduced-motion: reduce): {
+  @media screen and (prefers-reduced-motion: reduce) : {
     * {
       animationduration: 0.001ms !important;
       animationiterationcount: 1 !important;
@@ -80,6 +82,7 @@ html {
   letter-spacing: -0.176px;
   box-sizing: border-box;
   font-size: 16px;
+  overflow-y: scroll;
 }
 @supports (font-variation-settings: normal) {
   html {
@@ -127,4 +130,12 @@ span {
 code,
 pre {
   font-family: var(--monospace-fonts);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: #292d3e;
+  box-shadow: rgba(39, 44, 49, 0.06) 8px 14px 38px,
+    rgba(39, 44, 49, 0.03) 1px 3px 8px;
+}
+pre > .token-line > span {
+  color: #a6accd;
 }

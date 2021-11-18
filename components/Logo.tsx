@@ -1,6 +1,8 @@
-import styles from "./Logo.module.scss";
+import styles from "components/Logo.module.scss";
 
-const Logo = (props) => {
+interface LogoProps {}
+
+const Logo = (props: LogoProps) => {
   return (
     <svg
       width={35}
