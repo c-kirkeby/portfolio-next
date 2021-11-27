@@ -30,6 +30,7 @@
   --purple: #6308fb;
   --darkPurple: #341748;
   --black: #18013d;
+  --offBlack: #522C8F;
   --white: #fefefe;
   --cyan: #1effff;
   --grey: #857d7d;
@@ -37,21 +38,12 @@
   /* Theming */
   --primary: var(--purple);
   --background: var(--white);
+  --foreground: var(--white);
   --text: var(--darkPurple);
   --codeBg: #292d3e;
   --secondary: var(--cyan);
-  --black: var(--black);
   --muted: var(--grey);
   --shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px;
-  @media (prefers-color-scheme: dark) {
-    --primary: var(--cyan);
-    --background: var(--black);
-    --text: var(--white);
-    --secondary: var(--purple);
-    --black: var(--black);
-    --muted: var(--grey);
-    --shadow: none;
-  }
 
   /* Font Families */
   --heading-fonts: "Metropolis", Frutiger, "Frutiger Linotype", Univers, Calibri,
@@ -74,6 +66,18 @@
       animationiterationcount: 1 !important;
       transitionduration: 0.001ms !important;
     }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: var(--cyan);
+    --background: var(--black);
+    --foreground: var(--offBlack);
+    --text: var(--white);
+    --secondary: var(--purple);
+    --muted: var(--grey);
+    --shadow: none;
   }
 }
 

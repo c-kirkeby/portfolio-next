@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import withDarkMode, { MODE } from 'next-dark-mode'
 import { TinaEditProvider } from 'tinacms/dist/edit-state'
-import '../styles/global.css'
+import 'styles/global.css'
 const TinaCMS = dynamic(() => import('tinacms'), { ssr: false })
 
 
@@ -29,4 +29,4 @@ const App = ({ Component, pageProps }) => {
   )
 }
 
-export default App
+export default withDarkMode(App, { defaultMode: MODE.LIGHT})
