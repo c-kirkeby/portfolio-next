@@ -9,12 +9,21 @@ interface CardProps {
   link?: string;
 }
 
-const Card = ({ title = 'test', content, className, link = undefined, ...props }: CardProps): JSX.Element => {
+const Card = ({
+  title = "test",
+  content,
+  className,
+  link = undefined,
+  ...props
+}: CardProps): JSX.Element => {
   return (
-    <div className={className ? [styles.card, className].join(' ') : styles.card} {...props}>
+    <div
+      className={className ? [styles.card, className].join(" ") : styles.card}
+      {...props}
+    >
       <h2 className={styles[`card-title`]}>{title}</h2>
       <p className={styles[`card-text`]}>{content}</p>
-      {link ? <Link href={link}>Read more</Link> : <></>}
+      {link ? <Link href={link}>Read blog post</Link> : <></>}
     </div>
   );
 };
