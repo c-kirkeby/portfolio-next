@@ -8,7 +8,7 @@ const Header = () => {
     <header className={styles.header}>
       <nav className={styles.nav}>
         <Link passHref href="/">
-          <a className={styles[`logo-link`]}>
+          <a aria-label="To home page" className={styles[`logo-link`]}>
             <Logo />
           </a>
         </Link>
