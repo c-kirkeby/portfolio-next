@@ -70,7 +70,14 @@ export default defineSchema({
                   name: "language",
                   label: "Language",
                   type: "string",
-                  // options: ["js", "go"],
+                  options: [
+                    "typescript",
+                    "javascript",
+                    "bash",
+                    "jsx",
+                    "js",
+                    "ts",
+                  ],
                 },
                 {
                   name: "code",

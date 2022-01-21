@@ -67,7 +67,15 @@
                 {
                   "name": "language",
                   "label": "Language",
-                  "type": "string"
+                  "type": "string",
+                  "options": [
+                    "typescript",
+                    "javascript",
+                    "bash",
+                    "jsx",
+                    "js",
+                    "ts"
+                  ]
                 },
                 {
                   "name": "code",

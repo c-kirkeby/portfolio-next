@@ -107,6 +107,14 @@
                   "name": "language",
                   "label": "Language",
                   "type": "string",
+                  "options": [
+                    "typescript",
+                    "javascript",
+                    "bash",
+                    "jsx",
+                    "js",
+                    "ts"
+                  ],
                   "namespace": [
                     "posts",
                     "body",
