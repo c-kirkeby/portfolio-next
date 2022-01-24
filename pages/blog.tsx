@@ -1,35 +1,43 @@
-import { getStaticPropsForTina, gql } from "tinacms";
+import { staticRequest, gql } from "tinacms";
 import Card from "../components/Card";
 import Page from "../components/Page";
 import styles from "styles/blog.module.css";
 import { BlogPostList } from "interfaces/blog.interface";
 
 export const getStaticProps = async () => {
-  const tinaProps = await getStaticPropsForTina({
-    query: gql`
-      query {
-        getPostsList {
-          edges {
-            node {
-              data {
-                title
-                date
-                excerpt
-              }
-              sys {
-                filename
-              }
+  const query = gql`
+    query {
+      getPostsList {
+        edges {
+          node {
+            data {
+              title
+              date
+              excerpt
+            }
+            sys {
+              filename
             }
           }
         }
       }
-    `,
-    variables: {},
-  });
-
+    }
+  `;
+  const variables = {};
+  let data = {};
+  try {
+    data = await staticRequest({
+      query,
+      variables,
+    });
+  } catch {
+    // swallow errors related to document creation
+  }
   return {
     props: {
-      ...tinaProps,
+      query,
+      variables,
+      data,
     },
   };
 };

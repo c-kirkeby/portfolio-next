@@ -5,12 +5,12 @@ import palenight from "prism-react-renderer/themes/palenight";
 
 // import dracula from "prism-react-renderer/themes/dracula";
 
-interface CodeBlockProps {
+export interface CodeProps {
   children: string;
-  language: Language;
+  language?: Language;
 }
 
-const Code = ({ children, language }: CodeBlockProps) => {
+const Code = ({ children, language = "markup" }: CodeProps) => {
   return (
     <Highlight
       Prism={defaultProps.Prism}

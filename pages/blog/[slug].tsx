@@ -1,4 +1,4 @@
-import { staticRequest, getStaticPropsForTina, gql } from "tinacms";
+import { staticRequest, gql } from "tinacms";
 import { useRouter } from "next/router";
 import MDX from "components/MDX";
 import Page from "components/Page";
@@ -13,12 +13,12 @@ interface BlogPostParams {
   };
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   // @todo - raise issue with TinaCMS team to change type signature.
   // @ts-ignore
   const postsListData: BlogPostList[] = await staticRequest({
     query: gql`
-      query {
+      {
         getPostsList {
           edges {
             node {
@@ -32,49 +32,55 @@ export async function getStaticPaths() {
     `,
     variables: {},
   });
-  return {
-    // @todo - raise issue with TinaCMS team to change type signature.
-    // @ts-ignore
-    paths: postsListData.getPostsList.edges.map((edge) => ({
-      params: { slug: edge.node.sys.filename },
-    })),
-    // When creating a new document, this will allow you to see it
-    // before it's fully deployed if you're in edit-mode.
-    fallback: "blocking",
-  };
-}
-
-export const getStaticProps = async ({ params }: BlogPostParams) => {
-  const { slug } = params;
-  const variables = { relativePath: `${slug}.mdx` };
-  const tinaProps = await getStaticPropsForTina({
-    query: gql`
-      query BlogPostQuery($relativePath: String!) {
-        getPostsDocument(relativePath: $relativePath) {
-          data {
-            title
-            excerpt
-            date
-            coverImage
-            author {
-              name
-              picture
-            }
-            ogImage {
-              url
-            }
-            body
-          }
-        }
-      }
-    `,
-    variables: variables,
+  const paths = postsListData.getPostsList.edges.map((edge) => {
+    return { params: { slug: edge.node.sys.filename } };
   });
 
   return {
+    paths,
+    fallback: "blocking",
+  };
+};
+
+export const getStaticProps = async (context) => {
+  const query = gql`
+    query BlogPostQuery($relativePath: String!) {
+      getPostsDocument(relativePath: $relativePath) {
+        data {
+          title
+          excerpt
+          date
+          coverImage
+          author {
+            name
+            picture
+          }
+          ogImage {
+            url
+          }
+          body
+        }
+      }
+    }
+  `;
+  const variables = {
+    relativePath: context.params.slug + ".mdx",
+  };
+  let data = {};
+  try {
+    data = await staticRequest({
+      query,
+      variables,
+    });
+  } catch (error) {
+    // swallow errors related to document creation
+  }
+
+  return {
     props: {
-      ...tinaProps,
-      slug,
+      data,
+      query,
+      variables,
     },
   };
 };
@@ -89,12 +95,13 @@ interface BlogPostProps {
 }
 
 export default function Post({ data, slug }: BlogPostProps) {
-  const { title, coverImage, date, author, body } = data.getPostsDocument.data;
   const router = useRouter();
 
-  if (!router.isFallback && !slug) {
+  if (!router.isFallback && !data?.getPostsDocument && !slug) {
     return <NotFoundPage />;
   }
+  const { title, coverImage, date, author, body } = data.getPostsDocument.data;
+
   return (
     <Page title={title}>
       <div className={styles["post-container"]}>
