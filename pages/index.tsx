@@ -1,36 +1,46 @@
-import { getStaticPropsForTina, gql } from "tinacms";
+import { gql, staticRequest } from "tinacms";
 import { Card, Page } from "components";
 import styles from "styles/index.module.scss";
 import { BlogPostList } from "interfaces/blog.interface";
 
 export const getStaticProps = async () => {
-  // TODO: Don't load all posts, only get the latest. For some reasn TinaCMS
+  // TODO: Don't load all posts, only get the latest. For some reason TinaCMS
   //       doesn't seem to handle the "first" and "last" arguments.
-  const tinaProps = await getStaticPropsForTina({
-    query: gql`
-      query {
-        getPostsList {
-          edges {
-            node {
-              data {
-                title
-                date
-                excerpt
-              }
-              sys {
-                filename
-              }
+  const query = gql`
+    query {
+      getPostsList(first: 1) {
+        edges {
+          node {
+            data {
+              title
+              date
+              excerpt
+            }
+            sys {
+              filename
             }
           }
         }
       }
-    `,
-    variables: {},
-  });
+    }
+  `;
+  const variables = {};
+
+  let data = {};
+  try {
+    data = await staticRequest({
+      query,
+      variables,
+    });
+  } catch (error) {
+    // swallow errors related to document creation
+  }
 
   return {
     props: {
-      ...tinaProps,
+      data,
+      query,
+      variables,
     },
   };
 };
