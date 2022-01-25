@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import styles from "../styles/404.module.css";
-import Page from "../components/Page";
+import styles from "styles/404.module.css";
+import { Page } from "components";
 
 const NotFoundPage = () => {
   return (

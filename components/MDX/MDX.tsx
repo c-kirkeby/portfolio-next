@@ -1,5 +1,5 @@
 import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
-import Code, { CodeProps } from "./Code";
+import { Code, CodeProps } from "components";
 
 interface MDXProps {
   content: TinaMarkdownContent | TinaMarkdownContent[];
@@ -14,7 +14,7 @@ const components = {
   },
 };
 
-const MDX = ({ content }: MDXProps) => {
+export const MDX = ({ content }: MDXProps) => {
   // @todo - Type signature for TinaMarkdown is expecting an empty components
   // object. Possibly known issue: https://github.com/tinacms/tinacms/issues/2131
   // type TinaMarkdown = ({
@@ -29,5 +29,3 @@ const MDX = ({ content }: MDXProps) => {
     />
   );
 };
-
-export default MDX;

@@ -1,6 +1,5 @@
 import { staticRequest, gql } from "tinacms";
-import Card from "../components/Card";
-import Page from "../components/Page";
+import { Card, Page } from "components";
 import styles from "styles/blog.module.css";
 import { BlogPostList } from "interfaces/blog.interface";
 

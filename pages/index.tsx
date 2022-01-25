@@ -1,6 +1,5 @@
 import { getStaticPropsForTina, gql } from "tinacms";
-import Page from "components/Page";
-import Card from "components/Card";
+import { Card, Page } from "components";
 import styles from "styles/index.module.scss";
 import { BlogPostList } from "interfaces/blog.interface";
 

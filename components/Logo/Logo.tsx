@@ -1,8 +1,8 @@
-import styles from "components/Logo.module.scss";
+import styles from "./Logo.module.scss";
 
 interface LogoProps {}
 
-const Logo = (props: LogoProps) => {
+export const Logo = (props: LogoProps) => {
   return (
     <svg
       width={35}
@@ -41,4 +41,3 @@ const Logo = (props: LogoProps) => {
     </svg>
   );
 };
-export default Logo;

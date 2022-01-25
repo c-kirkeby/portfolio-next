@@ -1,9 +1,8 @@
-import React from "react";
 import Link from "next/link";
 import styles from "./Header.module.scss";
-import Logo from "./Logo";
+import { Logo } from "components";
 
-const Header = () => {
+export const Header = () => {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
@@ -31,5 +30,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

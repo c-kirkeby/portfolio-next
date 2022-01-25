@@ -1,16 +1,15 @@
 /* eslint-disable react/no-array-index-key */
-import React from "react";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import palenight from "prism-react-renderer/themes/palenight";
 
 // import dracula from "prism-react-renderer/themes/dracula";
 
-export interface CodeProps {
+export type CodeProps = {
   children: string;
   language?: Language;
-}
+};
 
-const Code = ({ children, language = "markup" }: CodeProps) => {
+export const Code = ({ children, language = "markup" }: CodeProps) => {
   return (
     <Highlight
       Prism={defaultProps.Prism}
@@ -48,5 +47,3 @@ const Code = ({ children, language = "markup" }: CodeProps) => {
     </Highlight>
   );
 };
-
-export default Code;

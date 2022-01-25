@@ -4,7 +4,7 @@ interface MetaProps {
   title: string;
 }
 
-const Meta = ({ title }: MetaProps) => (
+export const Meta = ({ title }: MetaProps) => (
   <Head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
@@ -17,5 +17,3 @@ const Meta = ({ title }: MetaProps) => (
     <title>{title}</title>
   </Head>
 );
-
-export default Meta;

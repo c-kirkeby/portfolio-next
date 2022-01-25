@@ -1,7 +1,6 @@
 import { staticRequest, gql } from "tinacms";
 import { useRouter } from "next/router";
-import MDX from "components/MDX";
-import Page from "components/Page";
+import { MDX, Page } from "components";
 import NotFoundPage from "pages/404";
 import styles from "styles/post.module.css";
 import { epochToLocaleDateString } from "lib/dateUtil";
@@ -113,7 +112,7 @@ export default function Post({ data, slug }: BlogPostProps) {
               <div>
                 <h1 className={styles.heading}>{title}</h1>
                 {coverImage ? coverImage : null}
-                <div>
+                <div className={styles["post-meta"]}>
                   <span className={styles["post-date"]}>
                     {epochToLocaleDateString(date, "en-AU")}
                   </span>

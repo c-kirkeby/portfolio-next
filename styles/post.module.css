@@ -4,13 +4,19 @@
   margin: 0 auto;
 }
 
+.post-meta {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
 .post-date {
   color: var(--muted);
 }
 
 .heading {
   /* @todo remove font-size. Page isn't inheriting html style for some reason.*/
-  font-size: 2rem;
+  font-size: 3rem;
   margin: 0;
 }
 
