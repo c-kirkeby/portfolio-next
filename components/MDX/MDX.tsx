@@ -10,7 +10,7 @@ const components = {
     return <Code>{props.children}</Code>;
   },
   code_block: (props: CodeProps) => {
-    return <Code language={props.language}>{props.children}</Code>;
+    return <Code lang={props.lang}>{props.children}</Code>;
   },
 };
 
