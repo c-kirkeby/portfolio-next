@@ -56,7 +56,7 @@ export type Document = {
 
 /** A relay-compliant pagination connection */
 export type Connection = {
-  totalCount: Scalars['Int'];
+  totalCount: Scalars['Float'];
 };
 
 export type Query = {
@@ -91,8 +91,8 @@ export type QueryGetDocumentArgs = {
 export type QueryGetDocumentListArgs = {
   before?: InputMaybe<Scalars['String']>;
   after?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Float']>;
+  last?: InputMaybe<Scalars['Float']>;
 };
 
 
@@ -104,8 +104,8 @@ export type QueryGetPostsDocumentArgs = {
 export type QueryGetPostsListArgs = {
   before?: InputMaybe<Scalars['String']>;
   after?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Float']>;
+  last?: InputMaybe<Scalars['Float']>;
 };
 
 export type DocumentConnectionEdges = {
@@ -117,7 +117,7 @@ export type DocumentConnectionEdges = {
 export type DocumentConnection = Connection & {
   __typename?: 'DocumentConnection';
   pageInfo?: Maybe<PageInfo>;
-  totalCount: Scalars['Int'];
+  totalCount: Scalars['Float'];
   edges?: Maybe<Array<Maybe<DocumentConnectionEdges>>>;
 };
 
@@ -125,7 +125,7 @@ export type Collection = {
   __typename?: 'Collection';
   name: Scalars['String'];
   slug: Scalars['String'];
-  label: Scalars['String'];
+  label?: Maybe<Scalars['String']>;
   path: Scalars['String'];
   format?: Maybe<Scalars['String']>;
   matches?: Maybe<Scalars['String']>;
@@ -138,8 +138,8 @@ export type Collection = {
 export type CollectionDocumentsArgs = {
   before?: InputMaybe<Scalars['String']>;
   after?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Float']>;
+  last?: InputMaybe<Scalars['Float']>;
 };
 
 export type DocumentNode = PostsDocument;
@@ -185,7 +185,7 @@ export type PostsConnectionEdges = {
 export type PostsConnection = Connection & {
   __typename?: 'PostsConnection';
   pageInfo?: Maybe<PageInfo>;
-  totalCount: Scalars['Int'];
+  totalCount: Scalars['Float'];
   edges?: Maybe<Array<Maybe<PostsConnectionEdges>>>;
 };
 
