@@ -1,15 +1,15 @@
-import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 import { Code, CodeProps } from "components";
+import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 
 interface MDXProps {
   content: TinaMarkdownContent | TinaMarkdownContent[];
 }
 
 const components = {
-  code: (props: CodeProps) => {
+  Code: (props: CodeProps) => {
     return <Code>{props.children}</Code>;
   },
-  code_block: (props: CodeProps) => {
+  CodeBlock: (props: CodeProps) => {
     return <Code language={props.language}>{props.children}</Code>;
   },
 };
@@ -21,11 +21,5 @@ export const MDX = ({ content }: MDXProps) => {
   //   content: TinaMarkdownContent
   //   components?: Components<{}>
   //  }) => JSX.Element
-  return (
-    <TinaMarkdown
-      content={content}
-      /* @ts-ignore */
-      components={components}
-    />
-  );
+  return <TinaMarkdown content={content} components={components} />;
 };

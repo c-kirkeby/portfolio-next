@@ -1,10 +1,13 @@
-import { defineSchema } from "@tinacms/cli";
+import { RouteMappingPlugin, defineConfig, defineSchema } from "tinacms";
 
-export default defineSchema({
+import { client } from "./__generated__/client";
+
+const schema = defineSchema({
   collections: [
     {
       label: "Blog Posts",
       name: "posts",
+      format: "mdx",
       path: "content/posts",
       fields: [
         {
@@ -94,4 +97,30 @@ export default defineSchema({
       ],
     },
   ],
+});
+
+export default schema;
+
+export const tinaConfig = defineConfig({
+  client,
+  schema,
+  cmsCallback: (cms) => {
+    const RouteMapping = new RouteMappingPlugin((collection, document) => {
+      if (["page"].includes(collection.name)) {
+        if (document._sys.filename === "home") {
+          return "/";
+        }
+      }
+
+      if (["post"].includes(collection.name)) {
+        return `/blog/${document._sys.filename}`;
+      }
+
+      return undefined;
+    });
+
+    cms.plugins.add(RouteMapping);
+
+    return cms;
+  },
 });

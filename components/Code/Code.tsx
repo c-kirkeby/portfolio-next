@@ -1,8 +1,6 @@
-/* eslint-disable react/no-array-index-key */
-import Highlight, { defaultProps, Language } from "prism-react-renderer";
-import palenight from "prism-react-renderer/themes/palenight";
+import Highlight, { Language, defaultProps } from "prism-react-renderer";
 
-// import dracula from "prism-react-renderer/themes/dracula";
+import palenight from "prism-react-renderer/themes/palenight";
 
 export type CodeProps = {
   children: string;
@@ -10,11 +8,13 @@ export type CodeProps = {
 };
 
 export const Code = ({ children, language = "markup" }: CodeProps) => {
+  // return <pre>{JSON.stringify(children, null, 2)}</pre>;
+  // console.log(children);
   return (
     <Highlight
       Prism={defaultProps.Prism}
       theme={palenight}
-      code={children.trim()}
+      code={children}
       language={language}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (

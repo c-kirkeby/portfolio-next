@@ -1,33 +1,30 @@
 {
   "private": true,
   "scripts": {
-    "dev": "npm run tina-dev",
-    "build": "npm run tina-build",
-    "start": "npm run tina-start",
+    "dev": "tinacms dev -c \"next dev -p 3100 \"",
+    "build": "tinacms build && next build",
+    "start": "tinacms build && next start",
     "export": "next export",
-    "lint": "next lint --fix && tsc",
-    "tina-dev": "tinacms server:start -c \"next dev\"",
-    "tina-build": "tinacms server:start -c \"next build\"",
-    "tina-start": "tinacms server:start -c \"next start\""
+    "lint": "next lint --fix && tsc"
   },
   "devDependencies": {
-    "@tinacms/cli": "^0.59.0",
-    "@types/react": "^17.0.38",
-    "@typescript-eslint/eslint-plugin": "^5.10.1",
-    "@typescript-eslint/parser": "^5.10.1",
-    "eslint": "^8.7.0",
-    "eslint-config-next": "^12.0.8",
-    "eslint-config-prettier": "^8.3.0",
-    "typescript": "^4.5.5"
+    "@tinacms/cli": "^0.61.27",
+    "@types/react": "^18.0.24",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint": "^8.26.0",
+    "eslint-config-next": "^13.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "typescript": "^4.8.4"
   },
   "dependencies": {
-    "next": "latest",
+    "next": "^13.0.0",
     "next-dark-mode": "^3.0.0",
-    "prism-react-renderer": "^1.2.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "sass": "^1.49.0",
-    "styled-components": "^5.3.3",
-    "tinacms": "^0.64.2"
+    "prism-react-renderer": "^1.3.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.55.0",
+    "styled-components": "^5.3.6",
+    "tinacms": "^0.69.22"
   }
 }

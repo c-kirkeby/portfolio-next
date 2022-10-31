@@ -1,38 +1,16 @@
-import { staticRequest, gql } from "tinacms";
-import { useRouter } from "next/router";
+// import { BlogPostData, BlogPosstList } from "interfaces/blog.interface";
 import { MDX, Page } from "components";
-import NotFoundPage from "pages/404";
-import styles from "styles/post.module.css";
-import { epochToLocaleDateString } from "lib/dateUtil";
-import { BlogPostData, BlogPostList } from "interfaces/blog.interface";
 
-interface BlogPostParams {
-  params: {
-    slug: "string";
-  };
-}
+import NotFoundPage from "pages/404";
+import { client } from ".tina/__generated__/client";
+import { epochToLocaleDateString } from "lib/dateUtil";
+import styles from "styles/post.module.css";
+import { useRouter } from "next/router";
 
 export const getStaticPaths = async () => {
-  // @todo - raise issue with TinaCMS team to change type signature.
-  // @ts-ignore
-  const postsListData: BlogPostList[] = await staticRequest({
-    query: gql`
-      {
-        getPostsList {
-          edges {
-            node {
-              sys {
-                filename
-              }
-            }
-          }
-        }
-      }
-    `,
-    variables: {},
-  });
-  const paths = postsListData.getPostsList.edges.map((edge) => {
-    return { params: { slug: edge.node.sys.filename } };
+  const { data } = await client.queries.postsConnection();
+  const paths = data.postsConnection.edges?.map((edge) => {
+    return { params: { slug: edge?.node?._sys.filename } };
   });
 
   return {
@@ -41,39 +19,10 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async (context) => {
-  const query = gql`
-    query BlogPostQuery($relativePath: String!) {
-      getPostsDocument(relativePath: $relativePath) {
-        data {
-          title
-          excerpt
-          date
-          coverImage
-          author {
-            name
-            picture
-          }
-          ogImage {
-            url
-          }
-          body
-        }
-      }
-    }
-  `;
-  const variables = {
-    relativePath: context.params.slug + ".mdx",
-  };
-  let data = {};
-  try {
-    data = await staticRequest({
-      query,
-      variables,
-    });
-  } catch (error) {
-    // swallow errors related to document creation
-  }
+export const getStaticProps = async ({ params }: any) => {
+  const { data, query, variables } = await client.queries.posts({
+    relativePath: params.slug + ".mdx",
+  });
 
   return {
     props: {
@@ -83,23 +32,13 @@ export const getStaticProps = async (context) => {
     },
   };
 };
-
-interface BlogPostProps {
-  slug: string;
-  data: {
-    getPostsDocument: {
-      data: BlogPostData;
-    };
-  };
-}
-
-export default function Post({ data, slug }: BlogPostProps) {
+export default function Post({ data, slug }: any) {
   const router = useRouter();
 
-  if (!router.isFallback && !data?.getPostsDocument && !slug) {
+  if (!router.isFallback && !data?.posts && !slug) {
     return <NotFoundPage />;
   }
-  const { title, coverImage, date, author, body } = data.getPostsDocument.data;
+  const { title, coverImage, date, author, body } = data.posts;
 
   return (
     <Page title={title}>
@@ -112,8 +51,8 @@ export default function Post({ data, slug }: BlogPostProps) {
               <div>
                 <h1 className={styles.heading}>{title}</h1>
                 {coverImage ? coverImage : null}
-                <div className={styles["post-meta"]}>
-                  <span className={styles["post-date"]}>
+                <div className={styles.postMeta}>
+                  <span className={styles.postDate}>
                     {epochToLocaleDateString(date, "en-AU")}
                   </span>
                   <span>{author}</span>
