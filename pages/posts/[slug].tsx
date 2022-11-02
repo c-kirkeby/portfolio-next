@@ -4,6 +4,7 @@ import { format, parseISO } from "date-fns";
 import { Page } from "components";
 import styles from "styles/post.module.css";
 import { useMDXComponent } from "next-contentlayer/hooks";
+import { GetStaticPropsContext } from "next";
 
 export async function getStaticPaths() {
   const paths = allPosts.map((post) => post.url);
@@ -13,8 +14,11 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const { params } = context;
+  const post = allPosts.find(
+    (post) => post._raw.flattenedPath === params?.slug
+  );
   return {
     props: {
       post,
