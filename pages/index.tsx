@@ -1,40 +1,28 @@
 import { Card, Page } from "components";
+import { Post, allPosts } from "contentlayer/generated";
 
-import { BlogPostList } from "interfaces/blog.interface";
-import { client } from ".tina/__generated__/client";
+import React from "react";
+import { compareDesc } from "date-fns";
 import styles from "styles/index.module.scss";
-import { useTina } from "tinacms/dist/edit-state";
 
-export const getStaticProps = async (context) => {
-  const { data, query, variables } = await client.queries.postsConnection({
-    last: 1,
+export async function getStaticProps() {
+  const posts = allPosts.sort((a, b) => {
+    return compareDesc(new Date(a.date), new Date(b.date));
   });
-
-  return {
-    props: {
-      data,
-      query,
-      variables,
-    },
-  };
-};
-
-interface IndexPageProps {
-  [key: string]: BlogPostList;
+  return { props: { posts } };
 }
 
-const IndexPage = (props: any) => {
-  const { data } = useTina({
-    query: props.query,
-    variables: props.variables,
-    data: props.data,
-  });
-
-  const post = data.postsConnection.edges[0].node;
-
+const IndexPage = ({
+  posts,
+  ...props
+}: {
+  posts: Post[];
+  [x: string]: any;
+}) => {
+  const post = posts[0];
   return (
     <Page title={`Home · Christian Kirkeby`}>
-      <div className={styles.container}>
+      <div className={styles.container} {...props}>
         <div className={styles.hero}>
           <h1 className={styles.heroTitle}>{`Hi I'm Christian.`}</h1>
           <p className={styles.heroText}>
@@ -42,10 +30,10 @@ const IndexPage = (props: any) => {
           </p>
         </div>
         <Card
-          key={post.id}
+          key={post._id}
           title={post.title}
           content={post.excerpt}
-          link={`/blog/${post._sys.filename}`}
+          link={post.url}
         />
       </div>
     </Page>

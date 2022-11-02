@@ -9,6 +9,7 @@ out/
 yarn-error.log
 .vercel
 .pnpm-debug.log
+.contentlayer/
 
 # Typescript files
 tsconfig.tsbuildinfo

@@ -15,8 +15,7 @@
 }
 
 .heading {
-  /* @todo remove font-size. Page isn't inheriting html style for some reason.*/
-  font-size: 3rem;
+  font-size: 2rem;
   margin: 0;
 }
 

@@ -6,12 +6,12 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <Link passHref href="/" className={styles["nav-link"]}>
+        <Link passHref href="/">
           <Logo />
         </Link>
         <div className={styles.spacer}></div>
         <div className={styles.links}>
-          <Link href="/blog" className={styles["nav-link"]}>
+          <Link href="/posts" className={styles["nav-link"]}>
             Blog
           </Link>
           <Link href="/portfolio" className={styles["nav-link"]}>

@@ -1,3 +1,4 @@
+@import url("highlight.js/styles/github-dark.css");
 @font-face {
   font-family: "Metropolis";
   font-style: normal;
@@ -127,7 +128,7 @@ a,
 span {
   line-height: 1.6;
 }
-.prism-code {
+.hljs {
   font-family: var(--monospace-fonts);
   border-radius: 8px;
   padding: 1.5rem;
@@ -135,6 +136,9 @@ span {
   box-shadow: rgba(39, 44, 49, 0.06) 8px 14px 38px,
     rgba(39, 44, 49, 0.03) 1px 3px 8px;
 }
-.prism-code > .token-line > span {
+.hljs-function,
+.hljs-params,
+.hljs-tag,
+.xml {
   color: #a6accd;
 }

@@ -1,17 +1,9 @@
 import "../styles/global.css";
 
-import withDarkMode, { MODE } from "next-dark-mode";
-
-import TinaProvider from "../.tina/components/TinaDynamicProvider";
+// import withDarkMode, { MODE } from "next-dark-mode";
 
 const App = ({ Component, pageProps }: any) => {
-  return (
-    <>
-      <TinaProvider>
-        <Component {...pageProps} />
-      </TinaProvider>
-    </>
-  );
+  return <Component {...pageProps} />;
 };
 
 export default App;
