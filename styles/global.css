@@ -128,7 +128,7 @@ a,
 span {
   line-height: 1.6;
 }
-.hljs {
+pre {
   font-family: var(--monospace-fonts);
   border-radius: 8px;
   padding: 1.5rem;
@@ -136,9 +136,21 @@ span {
   box-shadow: rgba(39, 44, 49, 0.06) 8px 14px 38px,
     rgba(39, 44, 49, 0.03) 1px 3px 8px;
 }
-.hljs-function,
-.hljs-params,
-.hljs-tag,
-.xml {
-  color: #a6accd;
+pre > code {
+  display: grid;
+}
+code {
+  counter-reset: line;
+}
+
+code > .line::before {
+  counter-increment: line;
+  content: counter(line);
+
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 2rem;
+  text-align: right;
+  color: gray;
 }

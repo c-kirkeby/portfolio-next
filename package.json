@@ -8,24 +8,26 @@
     "lint": "next lint --fix && tsc"
   },
   "devDependencies": {
-    "@types/react": "^18.0.24",
-    "@typescript-eslint/eslint-plugin": "^5.41.0",
-    "@typescript-eslint/parser": "^5.41.0",
-    "eslint": "^8.26.0",
-    "eslint-config-next": "^13.0.0",
+    "@types/react": "^18.0.25",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "eslint": "^8.27.0",
+    "eslint-config-next": "^13.0.3",
     "eslint-config-prettier": "^8.5.0",
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "contentlayer": "^0.2.8",
+    "contentlayer": "^0.2.9",
     "date-fns": "^2.29.3",
     "highlight.js": "^11.6.0",
-    "next": "^13.0.0",
-    "next-contentlayer": "^0.2.8",
+    "next": "^13.0.3",
+    "next-contentlayer": "^0.2.9",
     "next-dark-mode": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rehype-highlight": "^6.0.0",
-    "sass": "^1.55.0"
+    "rehype-pretty-code": "^0.4.0",
+    "sass": "^1.56.1",
+    "shiki": "^0.11.1"
   }
 }
