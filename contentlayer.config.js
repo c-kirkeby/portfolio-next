@@ -17,6 +17,11 @@ export const Post = defineDocumentType(() => ({
       description: "The date of the post",
       required: true,
     },
+    draft: {
+      type: "boolean",
+      description: "Flag to signify if a post is ready to be published yet.",
+      default: false,
+    },
   },
   computedFields: {
     url: {
