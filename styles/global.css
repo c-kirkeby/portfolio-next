@@ -1,3 +1,4 @@
+@import url("highlight.js/styles/github-dark.css");
 @font-face {
   font-family: "Metropolis";
   font-style: normal;
@@ -127,7 +128,6 @@ a,
 span {
   line-height: 1.6;
 }
-code,
 pre {
   font-family: var(--monospace-fonts);
   border-radius: 8px;
@@ -136,6 +136,21 @@ pre {
   box-shadow: rgba(39, 44, 49, 0.06) 8px 14px 38px,
     rgba(39, 44, 49, 0.03) 1px 3px 8px;
 }
-pre > .token-line > span {
-  color: #a6accd;
+pre > code {
+  display: grid;
+}
+code {
+  counter-reset: line;
+}
+
+code > .line::before {
+  counter-increment: line;
+  content: counter(line);
+
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 2rem;
+  text-align: right;
+  color: gray;
 }

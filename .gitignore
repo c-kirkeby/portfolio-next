@@ -8,6 +8,8 @@ out/
 # Package manager files
 yarn-error.log
 .vercel
+.pnpm-debug.log
+.contentlayer/
 
 # Typescript files
 tsconfig.tsbuildinfo

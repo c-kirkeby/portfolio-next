@@ -1,71 +1,41 @@
-import { gql, staticRequest } from "tinacms";
 import { Card, Page } from "components";
+import { Post, allPosts } from "contentlayer/generated";
+
+import React from "react";
+import { compareDesc } from "date-fns";
 import styles from "styles/index.module.scss";
-import { BlogPostList } from "interfaces/blog.interface";
 
-export const getStaticProps = async () => {
-  // TODO: Don't load all posts, only get the latest. For some reason TinaCMS
-  //       doesn't seem to handle the "first" and "last" arguments.
-  const query = gql`
-    query {
-      getPostsList(first: 1) {
-        edges {
-          node {
-            data {
-              title
-              date
-              excerpt
-            }
-            sys {
-              filename
-            }
-          }
-        }
-      }
-    }
-  `;
-  const variables = {};
-
-  let data = {};
-  try {
-    data = await staticRequest({
-      query,
-      variables,
-    });
-  } catch (error) {
-    // swallow errors related to document creation
-  }
-
-  return {
-    props: {
-      data,
-      query,
-      variables,
-    },
-  };
-};
-
-interface IndexPageProps {
-  [key: string]: BlogPostList;
+export async function getStaticProps() {
+  const posts = allPosts
+    .sort((a, b) => {
+      return compareDesc(new Date(a.date), new Date(b.date));
+    })
+    .filter((post) => post.draft !== true);
+  return { props: { posts } };
 }
 
-const IndexPage = (props: IndexPageProps) => {
-  const post = props.data.getPostsList.edges[0].node;
+const IndexPage = ({
+  posts,
+  ...props
+}: {
+  posts: Post[];
+  [x: string]: any;
+}) => {
+  const post = posts[0];
   return (
     <Page title={`Home · Christian Kirkeby`}>
-      <div className={styles.container}>
+      <div className={styles.container} {...props}>
         <div className={styles.hero}>
-          <h1 className={styles[`hero-title`]}>{`Hi I'm Christian.`}</h1>
-          <p className={styles[`hero-text`]}>
-            A Brisbane-based Front-end web developer, QA Manager and
-            bread-baking hobbyist.
+          <h1 className={styles.heroTitle}>{`Hi I'm Christian.`}</h1>
+          <p className={styles.heroText}>
+            A Brisbane-based Full-stack Web Developer and bread-baking hobbyist.
           </p>
         </div>
         <Card
-          key={post.sys.filename}
-          title={post.data.title}
-          content={post.data.excerpt}
-          link={`/blog/${post.sys.filename}`}
+          key={post._id}
+          title={post.title}
+          content={post.excerpt}
+          link={post.url}
         />
       </div>
     </Page>
